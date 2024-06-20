@@ -1,0 +1,188 @@
+{
+    "service" : [
+        {
+            "title": "Prestasi Lembaga",
+            "imageUrl": "assets/images/Web.png"
+        },
+        {
+            "title": "Prestasi Siswa",
+            "imageUrl": "assets/images/Mobile.png"
+        },
+        {
+            "title": "Prestasi PTK",
+            "imageUrl": "assets/images/Design.png"
+        }
+        
+    ],
+    "portfolio" : [
+        {
+            "id": "asd1293uasdads1",
+            "title": "Profile Depan",
+            "imageUrl": "assets/images/profile_depan.jpg",
+            "type": "Gedung",
+            "responsibility": [
+                "Bangunan",
+                "Gedung"
+            ],
+            "credit": "https://dribbble.com/shots/15164950-Recruiting-app"
+        },
+        {
+            "id": "asd1293uhjkhkjh2",
+            "title": "Gedung Baru",
+            "imageUrl": "assets/images/gedung_baru.jpg",
+            "type": "Gedung",
+            "responsibility": [
+                "Bangunan",
+                "Gedung"
+            ],
+            "credit": "https://dribbble.com/shots/15276430-Stream"
+        },
+        {
+            "id": "asd1293uvbvcbbd3",
+            "title": "Lingkungan Sekitar",
+            "imageUrl": "assets/images/lingkungan_sekolah.jpg",
+            "type": "Gedung",
+            "responsibility": [
+                "Bangunan",
+                "Gedung"
+            ],
+            "credit": "https://dribbble.com/shots/15223131-Freelance-Mobile-App-Concept"
+        },
+        {
+            "id": "asd1293ufgdfgs4",
+            "title": "Upacara Bendera",
+            "imageUrl": "assets/images/kegiatan_upacara.jpg",
+            "type": "Kegiatan",
+            "responsibility": [
+                "Kegiatan",
+                "Acara"
+            ],
+            "credit": "https://dribbble.com/shots/15176338-Aura-Website-Main-Page"            
+        },
+        {
+            "id": "asd1293ulskmnb5",
+            "title": "Hari Guru",
+            "imageUrl": "assets/images/hari_guru.jpg",
+            "type": "Kegiatan",
+            "responsibility": [
+                "Acara",
+                "Kegiatan"
+            ],
+            "credit": "https://dribbble.com/shots/15173118-Surtido-Rico"
+        },
+        {
+            "id": "asd1293ulkmnbj6",
+            "title": "Penilaian Kinerja",
+            "imageUrl": "assets/images/penilaian_kinerja.jpg",
+            "type": "Kegiatan",
+            "responsibility": [
+                "Kegiatan",
+                "Acara"
+            ],
+            "credit": "https://dribbble.com/shots/15197890-Courses-Management-and-Promoting-Web-App"
+        }
+    ],
+    "advantage": [
+        [{
+            "title": "Ilmu Pengetahuan Alam",
+            "description": "Memperkenalkan siswa pada ilmu pengetahuan alam seperti fisika, kimia, dan biologi",
+            "imageUrl": "assets/images/Communicative.png"
+        },
+        {
+            "title": "Ilmu Pengetahuan Sosial",
+            "description": "Mengajarkan siswa tentang ilmu sosial seperti ekonomi, sejarah, dan geografi",
+            "imageUrl": "assets/images/Management.png"
+        }],
+        [{
+            "title": "Bahasa​",
+            "description": "Membekali siswa dengan keterampilan berbahasa dan pemahaman sastra yang mendalam",
+            "imageUrl": "assets/images/Collaborative.png"
+        },
+        {
+            "title": "Agama",
+            "description": "Mengajarkan pemahaman mendalam tentang ajaran dan nilai-nilai keagamaan",
+            "imageUrl": "assets/images/Favourite.png"
+        }]
+    ],
+    "testimonial": [
+        {
+            "name": "Rina Fitriani",
+"company": "Orang Tua Murid",
+"testimoni": "MAN 2 Cilacap adalah pilihan yang tepat untuk pendidikan anak saya. Mereka tidak hanya memberikan pendidikan yang berkualitas, tetapi juga perhatian yang besar terhadap perkembangan setiap siswa.",
+            "imageUrl": "assets/images/Sasha.jpg"
+        },
+        {
+           "name": "Adi Nugroho",
+            "company": "Alumni",
+            "testimoni": "Saya sangat berterima kasih kepada MAN 2 Cilacap atas pendidikan yang mereka berikan. Mereka memberikan fondasi yang kuat untuk kesuksesan saya di dunia akademik dan profesional.",
+            "imageUrl": "assets/images/Kruger.jpg"
+        },
+        {
+            "name": "Drs. Bambang Santoso",
+            "company": "Kepala Sekolah",
+            "testimoni": "Sebagai kepala sekolah, saya bangga dengan prestasi akademik dan non-akademik yang dicapai oleh siswa-siswa MAN 2 Cilacap. Mereka adalah teladan bagi sekolah kami dan saya yakin akan terus berkembang di masa depan.",
+            "imageUrl": "assets/images/Reiner.jpg"
+        }
+    ],
+    "team": [
+        {
+            "name": "Bpk KH. Ahmad ...",
+            "position": "Kepala Sekolah",
+            "imageUrl": "assets/images/CEO.jpg"
+        },
+        {
+            "name": "Ibu Dr. Siti Nurhaliza",
+        "position": "Wakil Kepala Sekolah",
+            "imageUrl": "assets/images/HRD.jpg"
+        },
+        {
+           "name": "Bpk. Drs. Bambang Wijaya",
+        "position": "Kepala Departemen Sains",
+            "imageUrl": "assets/images/Project-manager.jpg"
+        },
+        {
+            "name": "Ibu Dra. Maria ",
+        "position": "Kepala Departemen Matematika",
+            "imageUrl": "assets/images/Finance.jpg"
+        },
+        {
+            "name": "Ibu Dra. Nani Rahayu",
+        "position": "Konselor Sekolah",
+            "imageUrl": "assets/images/Frontend1.jpg"
+        },
+        {
+            "name": "Bpk. Drs. Sutrisno Adi",
+        "position": "Direktur Atletik",
+            "imageUrl": "assets/images/Frontend2.jpg"
+        },
+        {"name": "Ibu Dr. Hj. Dewi Sartika",
+        "position": "Kepala Departemen Sejarah",
+            "imageUrl": "assets/images/Backend1.jpg"
+        },
+        {
+           "name": "Bpk. Drs. Gunawan Setiawan",
+        "position": "Koordinator IT",
+            "imageUrl": "assets/images/Backend2.jpg"
+        },
+        {
+           "name": "Ibu Dra. Rina Sari",
+        "position": "Kepala Departemen Seni",
+            "imageUrl": "assets/images/Mobile1.jpg"
+        },
+        {
+            "name": "Bpk. Drs. Taufik Hidayat",
+        "position": "Direktur Musik",
+            "imageUrl": "assets/images/Mobile2.jpg"
+        },
+        {
+            "name": "Ibu Dr. Fitri ",
+        "position": "Kepala Perpustakaan",
+            "imageUrl": "assets/images/UIUX1.jpg"
+        },
+        {
+            "name": "Bpk. Drs. Agus Salim",
+        "position": "Kepala Departemen Pendidikan Jasmani",
+            "imageUrl": "assets/images/UIUX2.jpg"
+        }
+    ]
+}
