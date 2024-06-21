@@ -31,27 +31,27 @@ export default function Header(props) {
         <ul className="hidden text-theme-blue tracking-widest items-center lg:flex flex-row mt-0">
           <li>
             <Button
-              className={`${path === '/' ? 'active-link' : ''} text-lg px-5 no-underline hover:underline`}
+              className={`${path === '/man2' ? 'active-link' : ''} text-lg px-5 no-underline hover:underline`}
               type="link"
-              href=""
+              href="/man2"
             >
               Home
             </Button>
           </li>
           <li className="py-2 lg:py-0">
             <Button
-              className={`${path === '/team' ? 'active-link' : ''} text-lg px-5 no-underline hover:underline`}
+              className={`${path === '/man2/team' ? 'active-link' : ''} text-lg px-5 no-underline hover:underline`}
               type="link"
-              href="/team"
+              href="/man2/team"
             >
               Guru dan Staff
             </Button>
           </li>
           <li className="py-2 lg:py-0">
             <Button
-              className={`${path === '/project' ? 'active-link' : ''} text-lg px-5 no-underline hover:underline`}
+              className={`${path === '/man2/project' ? 'active-link' : ''} text-lg px-5 no-underline hover:underline`}
               type="link"
-              href="/project"
+              href="/man2/project"
             >
               Galeri
             </Button>
@@ -60,7 +60,7 @@ export default function Header(props) {
             <Button
               className="text-lg mx-auto ml-3 px-6 py-2 bg-theme-purple text-white rounded-full border-2 border-theme-purple hover:bg-dark-theme-purple border-purple-800 transition duration-200"
               type="link"
-              href="/discuss-project"
+              href="/man2/discuss-project"
             >
               Daftar Segera
             </Button>
@@ -81,38 +81,38 @@ export default function Header(props) {
           <ul className="z-50 flex flex-col text-theme-blue tracking-widest my-6 absolute bg-white w-full border-b-2 border-gray-300 lg:hidden">
             <li className="py-2 bg-white">
               <Button
-                className={`${path === '/' ? 'active-link' : ''} px-10 no-underline hover:underline`}
+                className={`${path === '/man2/' ? 'active-link' : ''} px-10 no-underline hover:underline`}
                 type="link"
-                href="/"
+                href="/man2/"
               >
                 Home
               </Button>
             </li>
             <li className="py-2 bg-white">
               <Button
-                className={`${path === '/team' ? 'active-link' : ''} px-10 no-underline hover:underline`}
+                className={`${path === '/man2/team' ? 'active-link' : ''} px-10 no-underline hover:underline`}
                 type="link"
-                href="/team"
+                href="/man2/team"
               >
-                Team
+                Guru & Staff
               </Button>
             </li>
             <li className="py-2 bg-white">
               <Button
-                className={`${path === '/project' ? 'active-link' : ''} px-10 no-underline hover:underline`}
+                className={`${path === '/man2/project' ? 'active-link' : ''} px-10 no-underline hover:underline`}
                 type="link"
-                href="/project"
+                href="/man2/project"
               >
-                Project
+                Galeri
               </Button>
             </li>
             <li className="mx-auto my-9 bg-white">
               <Button
                 className="mx-auto px-5 py-2 bg-theme-purple text-white rounded-full border-2 border-theme-purple hover:bg-dark-theme-purple border-purple-800 transition duration-200"
                 type="link"
-                href="/discuss-project"
+                href="/man2/discuss-project"
               >
-                Discuss Project
+                Daftar Sekarang
               </Button>
             </li>
           </ul>

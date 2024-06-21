@@ -2,15 +2,15 @@
     "service" : [
         {
             "title": "Prestasi Lembaga",
-            "imageUrl": "assets/images/Web.png"
+            "imageUrl": "/man2/assets/images/Web.png"
         },
         {
             "title": "Prestasi Siswa",
-            "imageUrl": "assets/images/Mobile.png"
+            "imageUrl": "/man2/assets/images/Mobile.png"
         },
         {
             "title": "Prestasi PTK",
-            "imageUrl": "assets/images/Design.png"
+            "imageUrl": "/man2/assets/images/Design.png"
         }
         
     ],
@@ -18,7 +18,7 @@
         {
             "id": "asd1293uasdads1",
             "title": "Profile Depan",
-            "imageUrl": "assets/images/profile_depan.jpg",
+            "imageUrl": "/man2/assets/images/profile_depan.JPG",
             "type": "Gedung",
             "responsibility": [
                 "Bangunan",
@@ -29,7 +29,7 @@
         {
             "id": "asd1293uhjkhkjh2",
             "title": "Gedung Baru",
-            "imageUrl": "assets/images/gedung_baru.jpg",
+            "imageUrl": "/man2/assets/images/gedung_baru.JPG",
             "type": "Gedung",
             "responsibility": [
                 "Bangunan",
@@ -40,7 +40,7 @@
         {
             "id": "asd1293uvbvcbbd3",
             "title": "Lingkungan Sekitar",
-            "imageUrl": "assets/images/lingkungan_sekolah.jpg",
+            "imageUrl": "/man2/assets/images/lingkungan_sekolah.jpg",
             "type": "Gedung",
             "responsibility": [
                 "Bangunan",
@@ -51,7 +51,7 @@
         {
             "id": "asd1293ufgdfgs4",
             "title": "Upacara Bendera",
-            "imageUrl": "assets/images/kegiatan_upacara.jpg",
+            "imageUrl": "/man2/assets/images/kegiatan_upacara.JPG",
             "type": "Kegiatan",
             "responsibility": [
                 "Kegiatan",
@@ -62,7 +62,7 @@
         {
             "id": "asd1293ulskmnb5",
             "title": "Hari Guru",
-            "imageUrl": "assets/images/hari_guru.jpg",
+            "imageUrl": "/man2/assets/images/hari_guru.JPG",
             "type": "Kegiatan",
             "responsibility": [
                 "Acara",
@@ -73,7 +73,7 @@
         {
             "id": "asd1293ulkmnbj6",
             "title": "Penilaian Kinerja",
-            "imageUrl": "assets/images/penilaian_kinerja.jpg",
+            "imageUrl": "/man2/assets/images/penilaian_kinerja.JPG",
             "type": "Kegiatan",
             "responsibility": [
                 "Kegiatan",
@@ -86,22 +86,22 @@
         [{
             "title": "Ilmu Pengetahuan Alam",
             "description": "Memperkenalkan siswa pada ilmu pengetahuan alam seperti fisika, kimia, dan biologi",
-            "imageUrl": "assets/images/Communicative.png"
+            "imageUrl": "/man2/assets/images/Communicative.png"
         },
         {
             "title": "Ilmu Pengetahuan Sosial",
             "description": "Mengajarkan siswa tentang ilmu sosial seperti ekonomi, sejarah, dan geografi",
-            "imageUrl": "assets/images/Management.png"
+            "imageUrl": "/man2/assets/images/Management.png"
         }],
         [{
             "title": "Bahasa​",
             "description": "Membekali siswa dengan keterampilan berbahasa dan pemahaman sastra yang mendalam",
-            "imageUrl": "assets/images/Collaborative.png"
+            "imageUrl": "/man2/assets/images/Collaborative.png"
         },
         {
             "title": "Agama",
             "description": "Mengajarkan pemahaman mendalam tentang ajaran dan nilai-nilai keagamaan",
-            "imageUrl": "assets/images/Favourite.png"
+            "imageUrl": "/man2/assets/images/Favourite.png"
         }]
     ],
     "testimonial": [
@@ -109,19 +109,19 @@
             "name": "Rina Fitriani",
 "company": "Orang Tua Murid",
 "testimoni": "MAN 2 Cilacap adalah pilihan yang tepat untuk pendidikan anak saya. Mereka tidak hanya memberikan pendidikan yang berkualitas, tetapi juga perhatian yang besar terhadap perkembangan setiap siswa.",
-            "imageUrl": "assets/images/Sasha.jpg"
+            "imageUrl": "/man2/assets/images/Sasha.jpg"
         },
         {
            "name": "Adi Nugroho",
             "company": "Alumni",
             "testimoni": "Saya sangat berterima kasih kepada MAN 2 Cilacap atas pendidikan yang mereka berikan. Mereka memberikan fondasi yang kuat untuk kesuksesan saya di dunia akademik dan profesional.",
-            "imageUrl": "assets/images/Kruger.jpg"
+            "imageUrl": "/man2/assets/images/Kruger.jpg"
         },
         {
             "name": "Drs. Bambang Santoso",
             "company": "Kepala Sekolah",
             "testimoni": "Sebagai kepala sekolah, saya bangga dengan prestasi akademik dan non-akademik yang dicapai oleh siswa-siswa MAN 2 Cilacap. Mereka adalah teladan bagi sekolah kami dan saya yakin akan terus berkembang di masa depan.",
-            "imageUrl": "assets/images/Reiner.jpg"
+            "imageUrl": "/man2/assets/images/Reiner.jpg"
         }
     ],
     "team": [

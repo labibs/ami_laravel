@@ -39,7 +39,7 @@ export default function AllPortfolio({ data }) {
               {
                                 mobile.map((item, index) => (
                                   <Fade bottom delay={500 * index}>
-                                    <Button type="link" href={`/project/${item.id}`}>
+                                    <Button type="link" href={`/man2/project/${item.id}`}>
                                       <div className="group rounded-2xl shadow-xl w-auto w-11/12 m-3 transform transition duration-500 hover:scale-110 portofolio-card">
                                         <div className="relative">
                                           <img src={item.imageUrl} alt="Portfolio" className="rounded-t-2xl z-0" />
@@ -68,7 +68,7 @@ export default function AllPortfolio({ data }) {
               {
                                 website.map((item, index) => (
                                   <Fade bottom delay={500 * index}>
-                                    <Button type="link" href={`/project/${item.id}`}>
+                                    <Button type="link" href={`/man2/project/${item.id}`}>
                                       <div className="group rounded-2xl shadow-xl w-auto w-11/12 m-3 transform transition duration-500 hover:scale-110 portofolio-card">
                                         <div className="relative">
                                           <img src={item.imageUrl} alt="Portfolio" className="rounded-t-2xl z-0" />
@@ -97,7 +97,7 @@ export default function AllPortfolio({ data }) {
               {
                                 data.map((item, index) => (
                                   <Fade bottom delay={500 * index}>
-                                    <Button type="link" href={`/project/${item.id}`}>
+                                    <Button type="link" href={`/man2/project/${item.id}`}>
                                       <div className="group rounded-2xl shadow-xl w-auto w-11/12 m-3 transform transition duration-500 hover:scale-110 portofolio-card">
                                         <div className="relative">
                                           <img src={item.imageUrl} alt="Portfolio" className="rounded-t-2xl z-0" />
