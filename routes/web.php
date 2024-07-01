@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard.dashboard');
-});
-Route::get('/', function () {
-    return view('auth.login');
-});
-Route::get('/profile', function () {
-    return view('profile.profile');
-});
+
+Route::get('/', [AuthController::class, 'login']);
+Route::post('/postlogin', 'AuthController@postlogin');
+Route::get('/logout', 'AuthController@logout');
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/profile', [ProfileController::class, 'index']);
