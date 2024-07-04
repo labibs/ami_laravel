@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
 <div class="page-header min-height-300 border-radius-xl mt-2"

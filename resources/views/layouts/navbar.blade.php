@@ -20,8 +20,8 @@
                             </div>
                         </div> -->
                 <li class="nav-item ps-0 d-flex align-items-center d-none d-lg-block">
-                    <a class="btn btn-outline-dark btn-sm mb-0 me-3" href="#"
-                        style="text-transform: none; font-size: 16px; font-weight: bold;">Fulan S.Kom, M.Kom</a>
+                    <a class="btn btn-outline-dark btn-sm mb-0 me-3" href="../profile"
+                        style="text-transform: none; font-size: 16px; font-weight: bold;">{{Auth::user()->name}}</a>
                 </li>
 
                 <!-- <li class="nav-item d-flex align-items-center">
@@ -40,8 +40,8 @@
                     </a>
                 </li>
                 <li class="nav-item pe-3 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-body p-0">
-                        <i class="fa fa-cog text-lg fixed-plugin-button-nav cursor-pointer"></i>
+                    <a href="{{ route('logout') }}" class="nav-link text-body p-0">
+                        <i class="fa fa-sign-out text-lg fixed-plugin-button-nav cursor-pointer"></i>
                     </a>
                 </li>
                 <li class="nav-item dropdown pe-2 d-flex align-items-center">

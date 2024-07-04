@@ -3,8 +3,7 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html "
-            target="_blank">
+        <a class="navbar-brand m-0" href=" ../dashboard ">
             <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-1 font-weight-bold">AMI - UNUGHA</span>
 
@@ -42,7 +41,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="toggleSubmenu(event)">
+                <a class="nav-link" href="javascript:void(0);" onclick="toggleSubmenu(event)">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -70,17 +69,17 @@
                 </a>
                 <!-- Submenu -->
                 <ul class="submenu" style="display: none;">
-                    <li class="nav-item"><a class="nav-link  " href="../pages/tables.html"><span
+                    <li class="nav-item"><a class="nav-link  " href="../pengawasan/belum_audit"><span
                                 class="nav-link-text ms-3">Belum Audit</span></a></li>
-                    <li class="nav-item"><a class="nav-link  " href="../pages/tables.html"><span
+                    <li class="nav-item"><a class="nav-link  " href="../pengawasan/sedang_audit"><span
                                 class="nav-link-text ms-3">sedang Audit</span></a></li>
-                    <li class="nav-item"><a class="nav-link  " href="../pages/tables.html"><span
+                    <li class="nav-item"><a class="nav-link  " href="../pengawasan/sudah_audit"><span
                                 class="nav-link-text ms-3">sudah Audit</span></a></li>
                 </ul>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="toggleSubmenu(event)">
+                <a class="nav-link" href="javascript:void(0);" onclick="toggleSubmenu(event)">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 40" version="1.1"
@@ -123,7 +122,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="toggleSubmenu(event)">
+                <a class="nav-link" href="javascript:void(0);" onclick="toggleSubmenu(event)">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg class="text-dark" width="16px" height="16px" viewBox="0 0 42 42" version="1.1"
@@ -165,7 +164,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="toggleSubmenu(event)">
+                <a class="nav-link" href="javascript:void(0);" onclick="toggleSubmenu(event)">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg class="text-dark" width="16px" height="16px" viewBox="0 0 43 36" version="1.1"
@@ -237,7 +236,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  " href="../pages/sign-in.html">
+                <a class="nav-link  " href="../users">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1"
@@ -263,7 +262,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  " href="../">
+                <a class="nav-link  " href="../logout">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1"
@@ -319,7 +318,7 @@
                 href="https://www.creative-tim.com/product/soft-ui-dashboard-pro?ref=sidebarfree">Upgrade to pro</a> -->
     </div>
 </aside>
-<!-- <script>
+<script>
 document.addEventListener("DOMContentLoaded", function() {
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -365,4 +364,4 @@ document.addEventListener("DOMContentLoaded", function() {
     // Call setActiveLink function on page load
     setActiveLink();
 });
-</script> -->
+</script>

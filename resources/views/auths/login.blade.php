@@ -36,6 +36,7 @@
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="">
@@ -118,23 +119,26 @@
                                     <p class="mb-0">Masukan NIDN dan Passsword</p>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form">
+                                    <form class="form-auth-small" action="../postlogin" method="POST">
+                                        {{csrf_field()}}
                                         <label>NIDN</label>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" placeholder="NIDN"
+                                            <input name="email" type="email" class="form-control" placeholder="NIDN"
                                                 aria-label="Email" aria-describedby="email-addon">
                                         </div>
                                         <label>Password</label>
                                         <div class="mb-3">
-                                            <input type="email" class="form-control" placeholder="Password"
-                                                aria-label="Password" aria-describedby="password-addon">
+                                            <input name="password" type="password" class="form-control"
+                                                placeholder="Password" aria-label="Password"
+                                                aria-describedby="password-addon">
                                         </div>
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
+                                            <input class="form-check-input" type="checkbox" id="rememberMe"
+                                                name="remember" checked="">
                                             <label class="form-check-label" for="rememberMe">Ingat saya</label>
                                         </div>
                                         <div class="text-center">
-                                            <button type="button" class="btn bg-gradient-info w-100 mt-4 mb-0">Masuk
+                                            <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Masuk
                                             </button>
                                         </div>
                                     </form>
@@ -148,6 +152,14 @@
                                 </div>
                             </div>
                         </div>
+                        @if(Session::has('notifikasi_gagalLogin'))
+                        <script>
+                        swal("Message", "{{ Session::get('notifikasi_gagalLogin')}}", 'error'), {
+                            button: true,
+                            button: "Ok",
+                        }
+                        </script>
+                        @endif
                         <div class="col-md-6">
                             <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
                                 <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
