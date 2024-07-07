@@ -22,7 +22,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header pb-2">
-                        <h6>Data User</h6>
+                        <h6>Data Fakultas</h6>
                     </div>
                     <div class="card-body px-3 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -30,26 +30,23 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">
-                                            Prodi</th>
+                                            Nama</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5 ps-2">
-                                            Fakultas</th>
+                                            Dekan</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aktif</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Situs</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody id="users-table-body">
-                                    @include('users.partials.users_table')
+                                    @include('fakultas.partials.fakultas_table')
                                 </tbody>
                             </table>
-                            {{ $users->links() }}
+
                         </div>
                     </div>
                 </div>

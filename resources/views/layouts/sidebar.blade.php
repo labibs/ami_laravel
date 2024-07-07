@@ -41,7 +41,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);" onclick="toggleSubmenu(event)">
+                <a class="nav-link" href="javascript:void(0);">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -63,18 +63,20 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Pengawasan &nbsp;&nbsp;<i class="fa fa-angle-down"
+                    <span class="nav-link-text ms-1">Master Data &nbsp;&nbsp;<i class="fa fa-angle-down"
                             aria-hidden="true"></i>
                     </span>
                 </a>
                 <!-- Submenu -->
-                <ul class="submenu" style="display: none;">
-                    <li class="nav-item"><a class="nav-link  " href="../pengawasan/belum_audit"><span
-                                class="nav-link-text ms-3">Belum Audit</span></a></li>
-                    <li class="nav-item"><a class="nav-link  " href="../pengawasan/sedang_audit"><span
-                                class="nav-link-text ms-3">sedang Audit</span></a></li>
-                    <li class="nav-item"><a class="nav-link  " href="../pengawasan/sudah_audit"><span
-                                class="nav-link-text ms-3">sudah Audit</span></a></li>
+                <ul class="submenu mt-2" style="display: none;">
+                    <li class="nav-item"><a class="nav-link" href="../fakultas"><span class="nav-link-text ms-3">Data
+                                Fakultas</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../users"><span class="nav-link-text ms-3">Data
+                                User</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../indikator"><span class="nav-link-text ms-3">Data
+                                Siklus</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../indikator"><span class="nav-link-text ms-3">Data
+                                Indikator</span></a></li>
                 </ul>
             </li>
 
@@ -235,32 +237,7 @@
                     <span class="nav-link-text ms-1">Profile</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link  " href="../users">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>document</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                    <g transform="translate(1716.000000, 291.000000)">
-                                        <g transform="translate(154.000000, 300.000000)">
-                                            <path class="color-background opacity-6"
-                                                d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z">
-                                            </path>
-                                            <path class="color-background"
-                                                d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z">
-                                            </path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    <span class="nav-link-text ms-1">Data User</span>
-                </a>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link  " href="../logout">
                     <div
@@ -320,48 +297,54 @@
 </aside>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.nav-item > .nav-link');
 
-    // Function to handle link clicks
-    function handleClick(event) {
-        event.preventDefault(); // Prevent default link behavior
-        const clickedLink = event.target;
+    function toggleSubmenu(event) {
+        //event.preventDefault(); // Mencegah perilaku default dari event (jika diperlukan)
+        const clickedLink = event.currentTarget;
+        const submenu = clickedLink.nextElementSibling;
 
-        // Remove 'active' class from all links
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-        });
-
-        // Add 'active' class to the clicked link
-        clickedLink.classList.add('active');
-
-        // Update URL based on clicked link's href attribute
-        const newURL = clickedLink.getAttribute('href');
-        window.history.pushState({}, '', newURL);
-
-        // Reload the page
-        window.location.reload();
+        if (submenu.style.display === 'block') {
+            submenu.style.display = 'none';
+        } else {
+            submenu.style.display = 'block';
+        }
     }
 
-    // Add click event listener to all nav links
+
+    // Add click event listener to each nav link to toggle submenu
     navLinks.forEach(link => {
-        link.addEventListener('click', handleClick);
+        link.addEventListener('click', toggleSubmenu);
     });
 
-    // Check URL and set active class accordingly
     function setActiveLink() {
         const currentURL = window.location.href;
         navLinks.forEach(link => {
-            const linkURL = link.href;
-            if (currentURL.includes(linkURL)) {
-                link.classList.add('active');
+            const submenu = link.nextElementSibling;
+            if (submenu && submenu.classList.contains('submenu')) {
+                // Jika terdapat submenu
+                const submenuLinks = submenu.querySelectorAll('.nav-link');
+                submenuLinks.forEach(subLink => {
+                    const subLinkURL = subLink.href;
+                    if (currentURL.includes(subLinkURL)) {
+                        // Menandai submenu dan submenu link yang sesuai
+                        link.classList.add('active');
+                        submenu.style.display = 'block';
+                        subLink.classList.add('active');
+                    }
+                });
             } else {
-                link.classList.remove('active');
+                // Jika tidak terdapat submenu
+                const linkURL = link.href;
+                if (currentURL === linkURL) {
+                    link.classList.add('active');
+                }
             }
         });
     }
 
-    // Call setActiveLink function on page load
+
+    // Call setActiveLink function when page loads
     setActiveLink();
 });
 </script>

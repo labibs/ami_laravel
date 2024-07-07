@@ -104,4 +104,14 @@ class UsersController extends Controller
         Session::flash('success', 'User berhasil diupdate!');
         return redirect()->route('users.index', compact('users'));
     }
+
+    public function delete($id)
+    {
+        //dd($id);
+        $user = User::find($id);
+        $user->delete();
+        $users = User::paginate(10);
+        Session::flash('success', 'User berhasil dihapus!');
+        return redirect()->route('users.index', compact('users'));
+    }
 }

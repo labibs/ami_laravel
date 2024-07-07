@@ -34,10 +34,15 @@
         <span class="text-secondary text-xs font-weight-bold">{{ $user->situs }}</span>
     </td>
     <td class="align-middle text-center">
-        <a href="javascript:;" class="btn btn-sm btn-warning text-secondary font-weight-bold text-xs mt-2 editUser"
+        <a href="javascript:;" class="btn btn-sm btn-warning text-dark font-weight-bold text-xs mt-2 editUser"
             data-toggle="tooltip" data-original-title="Edit user" data-bs-toggle="modal" data-bs-target="#editUserModal"
             data-id="{{ $user->id }}" data-route="{{ route('users.get_data', ['id' => $user->id]) }}">
-            Edit
+            <i class="fa fa-pencil text-lg"></i>
+        </a>
+        <a href="javascript:;" class="btn btn-sm btn-danger text-dark font-weight-bold text-xs mt-2 deleteUser"
+            data-toggle="tooltip" data-original-title="Edit user" data-id="{{ $user->id }}"
+            data-route="{{ route('users.delete', ['id' => $user->id]) }}">
+            <i class="fa fa-trash text-lg"></i>
         </a>
     </td>
 </tr>
