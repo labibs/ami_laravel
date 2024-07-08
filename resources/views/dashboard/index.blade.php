@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="numbers">
-                            <p class="text-md mb-0 text-white font-weight-bold">Program Studi</p>
+                            <p class="text-md mb-0 text-white font-weight-bold">Auditi</p>
                             <h5 class="font-weight-bolder text-white mb-0">
                                 24
 
@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="numbers">
-                            <p class="text-md mb-0 text-white font-weight-bold">Periode AMI</p>
+                            <p class="text-md mb-0 text-white font-weight-bold">Siklus AMI</p>
                             <h5 class="font-weight-bolder text-white mb-0">
                                 4
 
@@ -101,10 +101,9 @@
                     <div class="col-lg-6">
                         <div class="d-flex flex-column h-100">
                             <p class="mb-1 pt-2 text-bold">Selamat Datang</p>
-                            <h5 class="font-weight-bolder">Fulan S.Kom, M.Kom</h5>
-                            <p class="mb-5 text-sm">Anda login sebagai <b>Auditor</b>, dengan tugas melakukan evaluasi
-                                independen dan
-                                memberikan rekomendasi perbaikan.</p>
+                            <h5 class="font-weight-bolder">{{Auth::user()->name}}</h5>
+                            <p class="mb-5 text-sm">Anda login sebagai <b>{{Auth::user()->hak_akses}}</b>, dengan tugas
+                                ....</p>
                             <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto"
                                 href="../profile">
                                 Edit Profile
@@ -118,7 +117,7 @@
                                 class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
                             <div class="position-relative d-flex align-items-center justify-content-center h-100">
                                 <img class="w-100 position-relative z-index-2 pt-4"
-                                    src="../assets/img/illustrations/profile.png" alt="profile">
+                                    src="../storage/images/{{Auth::user()->avatar}}" alt="profile">
                             </div>
                         </div>
                     </div>
@@ -132,7 +131,7 @@
                 style="background-image: url('../assets/img/ivancik.jpg');">
                 <span class="mask bg-gradient-dark"></span>
                 <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                    <h5 class="text-white font-weight-bolder mb-4 pt-2">Panduan untuk Auditor</h5>
+                    <h5 class="text-white font-weight-bolder mb-4 pt-2">Panduan untuk {{Auth::user()->hak_akses}}</h5>
                     <p class="text-white text-sm">Pengawasan: Gunakan menu ini untuk mengetahui audit yang sedang
                         diawasi
                         dan statusnya.
@@ -305,8 +304,8 @@
     <div class="col-lg-7">
         <div class="card z-index-2">
             <div class="card-header pb-0">
-                <h6>Grafik Temuan</h6>
-                <p class="text-sm">
+                <h6>Report AMI</h6>
+                <p class="text-sm">Target
                     <i class="fa fa-arrow-up text-success"></i>
                     <span class="font-weight-bold">4% </span> di 2024
                 </p>

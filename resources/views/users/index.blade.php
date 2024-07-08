@@ -30,16 +30,19 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">
-                                            Prodi</th>
+                                            User</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5 ps-2">
-                                            Fakultas</th>
+                                            Ketua</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5 ps-2">
+                                            Team</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Hak Akses</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aktif</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Situs</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
@@ -90,8 +93,15 @@
                             <div class="col-md-6">
                                 <label>Fakultas</label>
                                 <div class="mb-3">
-                                    <input name="grup" type="text" class="form-control" placeholder="Fakultas"
-                                        aria-label="Team" aria-describedby="team-addon">
+                                    @php
+                                    $fakultas = \App\Models\Fakultas::where('active',"Ya")->get();
+                                    @endphp
+                                    <select name="grup_id" class="form-select" id="">
+                                        <option value="">Pilih Fakultas</option>
+                                        @foreach ($fakultas as $fakultas_1)
+                                        <option value="{{$fakultas_1->id}}">{{$fakultas_1->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6 ms-auto">
@@ -122,9 +132,9 @@
                             <div class="col-md-6">
                                 <label>Hak Akses </label>
                                 <select name="hak_akses" class="form-select" id="">
-                                    <option value="auditi">Auditi</option>
-                                    <option value="auditor">Auditor</option>
-                                    <option value="admin">Admin</option>
+                                    <option value="Auditi">Auditi</option>
+                                    <option value="Auditor">Auditor</option>
+                                    <option value="Admin">Admin</option>
                                 </select>
                             </div>
                             <div class="col-md-6 ms-auto">
@@ -186,9 +196,19 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>Fakultas</label>
+                            <label>Fakultas</label>
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="editGrup" name="grup">
+                                @php
+                                $fakultas = \App\Models\Fakultas::where('active', 'Ya')->get();
+                                @endphp
+                                <select name="grup_id" class="form-select" id="editGrupId">
+                                    <option value="">Pilih Fakultas</option>
+                                    @foreach ($fakultas as $fakultas_1)
+                                    <option value="{{ $fakultas_1->id }}">{{ $fakultas_1->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+
                         </div>
                         <div class="col-md-6 ms-auto">
                             <label>Situs</label>
@@ -216,9 +236,9 @@
                         <div class="col-md-6">
                             <label>Hak Akses </label>
                             <select name="hak_akses" class="form-select" id="editHak_akses">
-                                <option value="auditi">Auditi</option>
-                                <option value="auditor">Auditor</option>
-                                <option value="admin">Admin</option>
+                                <option value="Auditi">Auditi</option>
+                                <option value="Auditor">Auditor</option>
+                                <option value="Admin">Admin</option>
                             </select>
                         </div>
                         <div class="col-md-6 ms-auto">
@@ -283,7 +303,7 @@ $(document).on('click', '.editUser', function() {
             $('#idnya').val(id);
             $('#editUserId').val(id);
             $('#editName').val(data.name);
-            $('#editGrup').val(data.grup);
+            $('#editGrupId').val(data.grup_id);
             $('#editKetua_grup').val(data.ketua_grup);
             $('#editSitus').val(data.situs);
             $('#editHak_akses').val(data.hak_akses);

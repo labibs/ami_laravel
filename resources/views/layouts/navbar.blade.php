@@ -2,8 +2,8 @@
     class="navbar navbar-main navbar-expand-lg px-0 bg-white mx-4 shadow border-radius-xl mb-3 position-sticky shadow left-auto top-2 z-index-sticky">
 
     <div class="container-fluid py-1 px-3">
-        <h5 class="font-weight-bolder text-center pt-2 d-none d-lg-block">Audit Mutu Internal - Periode Ke-3</h5>
-        <h5 class="font-weight-bolder text-center pt-2 d-lg-none">AMI - Periode Ke-3</h5>
+        <h5 class="font-weight-bolder text-center pt-2 d-none d-lg-block">Audit Mutu Internal - Siklus 2023 - 2024</h5>
+        <h5 class="font-weight-bolder text-center pt-2 d-lg-none">AMI - Siklus 2023 - 2024</h5>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                 <div class="input-group">

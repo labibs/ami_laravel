@@ -6,8 +6,8 @@
                     © <script>
                     document.write(new Date().getFullYear())
                     </script>,
-                    project <i class="fa fa-heart"></i> by
-                    <a href="#" class="font-weight-bold">PT Satya Karya Technosolution</a>
+
+                    <a href="#" class="font-weight-bold">UNUGHA Cilacap</a>
 
                 </div>
             </div>

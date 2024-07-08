@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Fakultas;
 
 class User extends Authenticatable
 {
@@ -17,17 +18,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'active',
-        'hak_akses',
-        'password',
-        'grup',
-        'ketua_grup',
-        'avatar',
-        'situs',
-    ];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -48,4 +39,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function fakultas()
+    {
+        return $this->belongsTo(Fakultas::class, 'grup_id', 'id');
+    }
 }

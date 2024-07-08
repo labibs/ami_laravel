@@ -23,6 +23,8 @@ class UsersController extends Controller
         // Lakukan pencarian di database berdasarkan query yang diterima
         $users = User::where('name', 'like', '%' . $searchQuery . '%')
                      ->orWhere('email', 'like', '%' . $searchQuery . '%')
+                     ->orWhere('grup', 'like', '%' . $searchQuery . '%')
+                     ->orWhere('ketua_grup', 'like', '%' . $searchQuery . '%')
                      ->paginate(10); // Misalnya menggunakan pagination dengan 10 item per halaman
 
         // Render view partial users_table dan kirimkan sebagai respons AJAX
@@ -34,7 +36,7 @@ class UsersController extends Controller
         $user = new User;
         $user->name = $request->name;
         $user->ketua_grup = $request->ketua_grup;
-        $user->grup = $request->grup;
+        $user->grup_id = $request->grup_id;
         $user->situs = $request->situs;
         $user->hak_akses = $request->hak_akses;
         if($request->active == "on"){
@@ -75,7 +77,7 @@ class UsersController extends Controller
             'name' => $data->name,
             'email' => $data->email,
             'password' => $data->password,
-            'grup' => $data->grup,
+            'grup_id' => $data->grup_id,
             'ketua_grup' => $data->ketua_grup,
             'situs' => $data->situs,
             'hak_akses' => $data->hak_akses,
@@ -88,7 +90,7 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->ketua_grup = $request->ketua_grup;
-        $user->grup = $request->grup;
+        $user->grup_id = $request->grup_id;
         $user->situs = $request->situs;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);

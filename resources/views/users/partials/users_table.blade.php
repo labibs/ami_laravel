@@ -16,9 +16,20 @@
     </td>
     <td>
         <p class="text-xs font-weight-bold mb-0">
-            {{ $user->grup }}</p>
+            {{ $user->ketua_grup }}
+        </p>
         <p class="text-xs text-secondary mb-0">
-            {{ $user->ketua_grup }}</p>
+            NIDN:</p>
+    </td>
+    <td>
+        <p class="text-xs font-weight-bold mb-0">
+            {{ optional($user->fakultas)->name }}
+        </p>
+        <p class="text-xs text-secondary mb-0">
+            {{ $user->situs }}</p>
+    </td>
+    <td class="align-middle text-center">
+        <span class="text-secondary text-xs font-weight-bold">{{ $user->hak_akses }}</span>
     </td>
     <td class="align-middle text-center">
         <form action="{{ route('users.updateActive', ['id' => $user->id]) }}" method="POST"
@@ -29,9 +40,6 @@
             <input class="form-check-input" type="checkbox" id="rememberMe" name="active"
                 {{ $user->active == 'Ya' ? 'checked' : '' }} onchange="this.form.submit()">
         </form>
-    </td>
-    <td class="align-middle text-center">
-        <span class="text-secondary text-xs font-weight-bold">{{ $user->situs }}</span>
     </td>
     <td class="align-middle text-center">
         <a href="javascript:;" class="btn btn-sm btn-warning text-dark font-weight-bold text-xs mt-2 editUser"
