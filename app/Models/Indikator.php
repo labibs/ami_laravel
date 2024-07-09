@@ -14,6 +14,6 @@ class Indikator extends Model
 
     public function standar()
     {
-        return $this->belongsTo(Standar::class, 'standar_id', 'id');
+        return $this->belongsTo(Standar::class, 'standard_id', 'id');
     }
 }

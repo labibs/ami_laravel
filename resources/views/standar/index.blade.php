@@ -71,13 +71,8 @@
                             <div class="col-md-3">
                                 <label>Kode </label>
                                 <div class="mb-2">
-                                    <select name="kode" class="form-select" aria-label="Pilih Kode Standar">
-                                        <option value="">Pilih </option>
-                                        @foreach (range('A', 'Z') as $char)
-                                        <option value="{{ $char }}" {{ old('kode') == $char ? 'selected' : '' }}>
-                                            {{ $char }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input name="kode" type="text" class="form-control" placeholder="Kode"
+                                        aria-label="kode" aria-describedby="kode-addon">
                                 </div>
                             </div>
                             <div class="col-md-9 ms-auto">
@@ -136,13 +131,7 @@
                         <div class="col-md-2">
                             <label>kode</label>
                             <div class="mb-3">
-                                <select name="kode" class="form-select" aria-label="Pilih Kode Standar" id="editKode">
-                                    <option value="">Pilih </option>
-                                    @foreach (range('A', 'Z') as $char)
-                                    <option value="{{ $char }}" {{ old('kode') == $char ? 'selected' : '' }}>
-                                        {{ $char }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" class="form-control" id="editKode" name="kode">
                             </div>
                         </div>
                         <div class="col-md-9 ms-auto">

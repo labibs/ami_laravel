@@ -255,13 +255,13 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form class="" action="{{ route('indikator.create') }}" method="POST">
+                    <form class="" action="{{ route('indikator.import') }}" method="POST" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-md-12">
                                 <label>Data Indikator Excel</label>
                                 <div class="mb-3">
-                                    <input name="file" type="file" class="form-control" placeholder="Kode"
+                                    <input name="file_excel" type="file" class="form-control" placeholder="Kode"
                                         aria-label="Kode" aria-describedby="situs-addon">
                                 </div>
                             </div>

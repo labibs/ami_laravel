@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\IndikatorImport;
 use App\Models\Indikator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
+use Maatwebsite\Excel\Facades\Excel;
 
 class IndikatorController extends Controller
 {
@@ -20,18 +22,18 @@ class IndikatorController extends Controller
         $searchQuery = $request->get('search');
 
         // Lakukan pencarian di database berdasarkan query yang diterima
-        $indikator = Indikator::where('standar_id', 'like', '%' . $searchQuery . '%')
-                     ->orWhere('kode', 'like', '%' . $searchQuery . '%')
-                     ->orWhere('indikator', 'like', '%' . $searchQuery . '%')
-                     ->orWhere('rujukan_paps', 'like', '%' . $searchQuery . '%')
-                     ->orWhere('rujukan_papt', 'like', '%' . $searchQuery . '%')
-                     ->orWhere('dokumen', 'like', '%' . $searchQuery . '%')
-                     ->orWhere('audity', 'like', '%' . $searchQuery . '%')
-                     ->orWhere('pemangku_kepentingan', 'like', '%' . $searchQuery . '%')
-                     ->paginate(10); // Misalnya menggunakan pagination dengan 10 item per halaman
+        $indikator = Indikator::where('standard_id', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('kode', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('indikator', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('rujukan_paps', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('rujukan_papt', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('dokumen', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('audity', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('pemangku_kepentingan', 'like', '%' . $searchQuery . '%')
+                    ->paginate(10); // Misalnya menggunakan pagination dengan 10 item per halaman
 
-        // Render view partial users_table dan kirimkan sebagai respons AJAX
-        return View::make('indikator.partials.indikator_table', compact('indikator'))->render();
+        // Render view partial indikator_table dan kirimkan sebagai respons AJAX
+        return view('indikator.partials.indikator_table', compact('indikator'))->render();
     }
     public function create(Request $request)
     {
@@ -112,6 +114,21 @@ class IndikatorController extends Controller
         $indikator->delete();
         $indikator = Indikator::paginate(10);
         Session::flash('success', 'Indikator berhasil dihapus!');
+        return redirect()->route('indikator.index', compact('indikator'));
+    }
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file_excel' => 'required|mimes:xlsx,xls' // Pastikan file yang diunggah adalah file Excel dengan ekstensi xlsx atau xls
+        ]);
+
+        // Ambil file Excel dari request
+        $file = $request->file('file_excel');
+
+        // Import data dari file Excel
+        Excel::import(new IndikatorImport, $file);
+        $indikator = Indikator::paginate(10);
+        Session::flash('success', 'Indikator berhasil diunggah!');
         return redirect()->route('indikator.index', compact('indikator'));
     }
 }

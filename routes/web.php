@@ -72,3 +72,4 @@ Route::put('/indikator/{id}/updateActive', [IndikatorController::class, 'updateA
 Route::get('/indikator/get_data/{id}', [IndikatorController::class, 'get_data'])->name('indikator.get_data')->middleware('auth','CheckHakAkses:Admin');
 Route::put('/indikator/{id}/update', [IndikatorController::class, 'update'])->name('indikator.update')->middleware('auth', 'CheckHakAkses:Admin');
 Route::get('/indikator/{id}/delete', [IndikatorController::class, 'delete'])->name('indikator.delete')->middleware('auth', 'CheckHakAkses:Admin');
+Route::post('/indikator/import',[IndikatorController::class, 'import'])->name('indikator.import');
