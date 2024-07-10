@@ -38,6 +38,8 @@
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
     <!-- Sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Select Search /select2-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
     .submenu {
         list-style: none;
@@ -95,7 +97,7 @@
                     <div class="badge-colors my-2 text-start">
                         <span class="badge filter bg-gradient-dark active" data-color="dark"
                             onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-primary" data-color="primary"
+                        <span class="badge filter bg-gradient-secondary" data-color="secondary"
                             onclick="sidebarColor(this)"></span>
                         <span class="badge filter bg-gradient-info" data-color="info"
                             onclick="sidebarColor(this)"></span>
@@ -113,9 +115,9 @@
                     <p class="text-sm">Choose between 2 different sidenav types.</p>
                 </div>
                 <div class="d-flex">
-                    <button class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-transparent"
+                    <button class="btn bg-gradient-secondary w-100 px-3 mb-2 active" data-class="bg-transparent"
                         onclick="sidebarType(this)">Transparent</button>
-                    <button class="btn bg-gradient-primary w-100 px-3 mb-2 ms-2" data-class="bg-white"
+                    <button class="btn bg-gradient-secondary w-100 px-3 mb-2 ms-2" data-class="bg-white"
                         onclick="sidebarType(this)">White</button>
                 </div>
                 <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>

@@ -31,13 +31,15 @@
     </td>
 
     <td class="align-middle text-center">
-        <a href="javascript:;" class="btn btn-sm btn-warning text-dark font-weight-bold text-xs mt-2 editFakultas"
+        <a href="javascript:;"
+            class="btn btn-sm btn-outline-secondary text-secondary font-weight-bold text-xs mt-2 editFakultas"
             data-toggle="tooltip" data-original-title="Edit Fakultas" data-bs-toggle="modal"
             data-bs-target="#editFakultasModal" data-id="{{ $fakultas_1->id }}"
             data-route="{{ route('fakultas.get_data', ['id' => $fakultas_1->id]) }}">
             <i class="fa fa-pencil text-lg"></i>
         </a>
-        <a href="javascript:;" class="btn btn-sm btn-danger text-dark font-weight-bold text-xs mt-2 deleteFakultas"
+        <a href="javascript:;"
+            class="btn btn-sm btn-outline-dark text-dark font-weight-bold text-xs mt-2 deleteFakultas"
             data-toggle="tooltip" data-original-title="Delete Fakultas" data-id="{{ $fakultas_1->id }}"
             data-route="{{ route('fakultas.delete', ['id' => $fakultas_1->id]) }}">
             <i class="fa fa-trash text-lg"></i>

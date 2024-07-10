@@ -41,7 +41,7 @@
   -webkit-backdrop-filter: $blur-backdrop-filter;
   backdrop-filter: $blur-backdrop-filter;
 
-  &.blur-gradient-primary {
+  &.blur-gradient-secondary {
     @include gradient-directional(rgba($primary-gradient, .95) 0%, rgba($primary-gradient-state, .95) 100%, $deg: 310deg);
   }
 }

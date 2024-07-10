@@ -71,7 +71,7 @@
         </div>
     </div>
     <div class="col-xl-3 col-sm-6">
-        <div class="card bg-gradient-dark">
+        <div class="card bg-gradient-secondary">
             <div class="card-body p-3">
                 <div class="row">
                     <div class="col-8">
@@ -112,7 +112,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
-                        <div class="bg-gradient-dark border-radius-lg h-100">
+                        <div class="bg-gradient-secondary border-radius-lg h-100">
                             <img src="../assets/img/shapes/waves-white.svg"
                                 class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
                             <div class="position-relative d-flex align-items-center justify-content-center h-100">
@@ -129,7 +129,7 @@
         <div class="card h-100 p-3">
             <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100"
                 style="background-image: url('../assets/img/ivancik.jpg');">
-                <span class="mask bg-gradient-dark"></span>
+                <span class="mask bg-gradient-secondary"></span>
                 <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
                     <h5 class="text-white font-weight-bolder mb-4 pt-2">Panduan untuk {{Auth::user()->hak_akses}}</h5>
                     <p class="text-white text-sm">Pengawasan: Gunakan menu ini untuk mengetahui audit yang sedang
@@ -150,7 +150,7 @@
     <div class="col-lg-5 mb-lg-0 mb-4">
         <div class="card z-index-2">
             <div class="card-body p-3">
-                <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">
+                <div class="bg-gradient-secondary border-radius-lg py-3 pe-1 mb-3">
                     <div class="chart">
                         <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
                     </div>
@@ -162,7 +162,7 @@
                         <div class="col-3 py-3 ps-0">
                             <div class="d-flex mb-2">
                                 <div
-                                    class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center">
+                                    class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-secondary text-center me-2 d-flex align-items-center justify-content-center">
                                     <svg width="10px" height="10px" viewBox="0 0 40 44" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                         <title>document</title>
@@ -187,7 +187,7 @@
                             </div>
                             <h4 class="font-weight-bolder">3</h4>
                             <div class="progress w-75">
-                                <div class="progress-bar bg-dark w-60" role="progressbar" aria-valuenow="60"
+                                <div class="progress-bar bg-secondary w-60" role="progressbar" aria-valuenow="60"
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
@@ -225,7 +225,7 @@
                             </div>
                             <h4 class="font-weight-bolder">20</h4>
                             <div class="progress w-75">
-                                <div class="progress-bar bg-dark w-90" role="progressbar" aria-valuenow="90"
+                                <div class="progress-bar bg-secondary w-90" role="progressbar" aria-valuenow="90"
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
@@ -257,7 +257,7 @@
                             </div>
                             <h4 class="font-weight-bolder">2</h4>
                             <div class="progress w-75">
-                                <div class="progress-bar bg-dark w-30" role="progressbar" aria-valuenow="30"
+                                <div class="progress-bar bg-secondary w-30" role="progressbar" aria-valuenow="30"
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
@@ -292,7 +292,7 @@
                             </div>
                             <h4 class="font-weight-bolder">1</h4>
                             <div class="progress w-75">
-                                <div class="progress-bar bg-dark w-50" role="progressbar" aria-valuenow="50"
+                                <div class="progress-bar bg-secondary w-50" role="progressbar" aria-valuenow="50"
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
@@ -646,7 +646,7 @@
                             <i class="ni ni-bell-55 text-success text-gradient"></i>
                         </span>
                         <div class="timeline-content">
-                            <h6 class="text-dark text-sm font-weight-bold mb-0">Tindak Lanjut</h6>
+                            <h6 class="text-secondary text-sm font-weight-bold mb-0">Tindak Lanjut</h6>
                             <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"> ~ Hari</p>
                         </div>
                     </div>
@@ -655,7 +655,7 @@
                             <i class="ni ni-html5 text-danger text-gradient"></i>
                         </span>
                         <div class="timeline-content">
-                            <h6 class="text-dark text-sm font-weight-bold mb-0">Presentasi dan Diskusi</h6>
+                            <h6 class="text-secondary text-sm font-weight-bold mb-0">Presentasi dan Diskusi</h6>
                             <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">1 Hari</p>
                         </div>
                     </div>
@@ -664,7 +664,7 @@
                             <i class="ni ni-cart text-info text-gradient"></i>
                         </span>
                         <div class="timeline-content">
-                            <h6 class="text-dark text-sm font-weight-bold mb-0">Penyusunan Laporan
+                            <h6 class="text-secondary text-sm font-weight-bold mb-0">Penyusunan Laporan
                             </h6>
                             <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">4 Hari</p>
                         </div>
@@ -674,27 +674,27 @@
                             <i class="ni ni-credit-card text-warning text-gradient"></i>
                         </span>
                         <div class="timeline-content">
-                            <h6 class="text-dark text-sm font-weight-bold mb-0">Pelaksanaan
+                            <h6 class="text-secondary text-sm font-weight-bold mb-0">Pelaksanaan
                             </h6>
                             <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">2 Hari</p>
                         </div>
                     </div>
                     <div class="timeline-block mb-3">
                         <span class="timeline-step">
-                            <i class="ni ni-key-25 text-primary text-gradient"></i>
+                            <i class="ni ni-key-25 text-secondary text-gradient"></i>
                         </span>
                         <div class="timeline-content">
-                            <h6 class="text-dark text-sm font-weight-bold mb-0">Persiapan
+                            <h6 class="text-secondary text-sm font-weight-bold mb-0">Persiapan
                             </h6>
                             <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">3 Hari</p>
                         </div>
                     </div>
                     <div class="timeline-block">
                         <span class="timeline-step">
-                            <i class="ni ni-money-coins text-dark text-gradient"></i>
+                            <i class="ni ni-money-coins text-secondary text-gradient"></i>
                         </span>
                         <div class="timeline-content">
-                            <h6 class="text-dark text-sm font-weight-bold mb-0">Perencanaan</h6>
+                            <h6 class="text-secondary text-sm font-weight-bold mb-0">Perencanaan</h6>
                             <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">1 Hari</p>
                         </div>
                     </div>

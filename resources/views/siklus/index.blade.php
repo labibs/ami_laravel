@@ -6,12 +6,12 @@
         <div class="card-body pb-2">
             <div class="row">
                 <div class="col-2">
-                    <a class=" btn bg-gradient-primary " data-bs-toggle="modal" data-bs-target="#tambahsiklus"
+                    <a class=" btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#tambahsiklus"
                         href="">Tambah</a>
                 </div>
                 <div class="col-3">
                     <form id="searchForm" action="{{ route('siklus.search') }}" method="GET" class="">
-                        <input type="text" id="searchInput" name="search" placeholder="Search..." class="form-control">
+                        <input type="text" id="searchInput" name="search" placeholder="Cari...." class="form-control">
                     </form>
                 </div>
             </div>
@@ -78,8 +78,11 @@
                             <div class="col-md-6 ms-auto">
                                 <label>Keterangan</label>
                                 <div class="mb-3">
-                                    <input name="description" type="text" class="form-control" placeholder="Keterangan"
-                                        aria-label="Ketua Team" aria-describedby="ketua_team-addon">
+                                    <select name="description" id="" class="form-select">
+                                        <option value="">Pilih</option>
+                                        <option value="GASAL">GASAL</option>
+                                        <option value="GENAP">GENAP</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -96,8 +99,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-outline-info">Simpan</button>
             </div>
             </form>
             @if(session('success'))
@@ -135,16 +138,20 @@
                             </div>
                         </div>
                         <div class="col-md-6 ms-auto">
-                            <label>Description</label>
+                            <label>Keterangan</label>
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="editDescription" name="description">
+                                <select name="description" id="editDescription" class="form-select">
+                                    <option value="">Pilih</option>
+                                    <option value="GASAL">GASAL</option>
+                                    <option value="GENAP">GENAP</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-outline-info">Simpan</button>
                 </div>
         </div>
         </form>

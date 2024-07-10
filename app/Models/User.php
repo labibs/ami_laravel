@@ -43,4 +43,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Fakultas::class, 'grup_id', 'id');
     }
+    public function audity()
+    {
+        return $this->belongsTo(Audity::class, 'audity_id', 'id');
+    }
 }

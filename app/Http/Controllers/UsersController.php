@@ -21,10 +21,13 @@ class UsersController extends Controller
         $searchQuery = $request->get('search');
 
         // Lakukan pencarian di database berdasarkan query yang diterima
-        $users = User::where('name', 'like', '%' . $searchQuery . '%')
+        $users = User::where('ketua_grup', 'like', '%' . $searchQuery . '%')
                      ->orWhere('email', 'like', '%' . $searchQuery . '%')
-                     ->orWhere('grup', 'like', '%' . $searchQuery . '%')
-                     ->orWhere('ketua_grup', 'like', '%' . $searchQuery . '%')
+                     ->orWhere('jabatan', 'like', '%' . $searchQuery . '%')
+                     ->orWhereHas('fakultas', function ($query) use ($searchQuery) {
+                        $query->where('name', 'like', '%' . $searchQuery . '%');
+                        })
+                     ->orWhere('hak_akses', 'like', '%' . $searchQuery . '%')
                      ->paginate(10); // Misalnya menggunakan pagination dengan 10 item per halaman
 
         // Render view partial users_table dan kirimkan sebagai respons AJAX
@@ -34,10 +37,12 @@ class UsersController extends Controller
     public function create(Request $request)
     {
         $user = new User;
-        $user->name = $request->name;
         $user->ketua_grup = $request->ketua_grup;
+        $user->audity_id = $request->audity_id;
         $user->grup_id = $request->grup_id;
         $user->situs = $request->situs;
+        $user->jabatan = $request->jabatan;
+        $user->nidn = $request->nidn;
         $user->hak_akses = $request->hak_akses;
         if($request->active == "on"){
             $user->active = "Ya";
@@ -76,7 +81,10 @@ class UsersController extends Controller
         return response()->json([
             'name' => $data->name,
             'email' => $data->email,
+            'jabatan' => $data->jabatan,
+            'nidn' => $data->nidn,
             'password' => $data->password,
+            'audity_id' => $data->audity_id,
             'grup_id' => $data->grup_id,
             'ketua_grup' => $data->ketua_grup,
             'situs' => $data->situs,
@@ -88,11 +96,13 @@ class UsersController extends Controller
     {
         //dd($request);
         $user = User::find($id);
-        $user->name = $request->name;
         $user->ketua_grup = $request->ketua_grup;
         $user->grup_id = $request->grup_id;
+        $user->audity_id = $request->audity_id;
         $user->situs = $request->situs;
         $user->email = $request->email;
+        $user->jabatan = $request->jabatan;
+        $user->nidn = $request->nidn;
         $user->password = bcrypt($request->password);
         $user->hak_akses = $request->hak_akses;
         $imag = $request->file('avatar');

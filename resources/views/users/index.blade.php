@@ -6,12 +6,12 @@
         <div class="card-body pb-2">
             <div class="row">
                 <div class="col-2">
-                    <a class=" btn bg-gradient-primary " data-bs-toggle="modal" data-bs-target="#tambahUser"
+                    <a class=" btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#tambahUser"
                         href="">Tambah</a>
                 </div>
                 <div class="col-3">
-                    <form id="searchForm" action="{{ route('users.search') }}" method="GET" class="">
-                        <input type="text" id="searchInput" name="search" placeholder="Search..." class="form-control">
+                    <form id="searchForm" action="{{ route('akun.search') }}" method="GET" class="">
+                        <input type="text" id="searchInput" name="search" placeholder="Cari...." class="form-control">
                     </form>
                 </div>
             </div>
@@ -22,7 +22,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header pb-2">
-                        <h6>Data User</h6>
+                        <h6>Data Akun</h6>
                     </div>
                     <div class="card-body px-3 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -30,13 +30,13 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">
-                                            User</th>
+                                            Akun</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5 ps-2">
-                                            Ketua</th>
+                                            Jabatan</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5 ps-2">
-                                            Team</th>
+                                            Institusi</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Hak Akses</th>
@@ -66,45 +66,72 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tambahUserLabel">Tambah User</h5>
+                <h5 class="modal-title" id="tambahUserLabel">Tambah Akun</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form class="" action="{{ route('users.create') }}" method="POST">
+                    <form class="" action="{{ route('akun.create') }}" method="POST">
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Nama Prodi</label>
+                                <label>Nama Akun</label>
                                 <div class="mb-3">
-                                    <input name="name" type="text" class="form-control" placeholder="Nama Prodi"
-                                        aria-label="Nama" aria-describedby="email-addon">
+                                    <input name="ketua_grup" type="text" class="form-control" placeholder="Nama Akun"
+                                        aria-label="Ketua Team" aria-describedby="ketua_team-addon">
                                 </div>
+
                             </div>
                             <div class="col-md-6 ms-auto">
-                                <label>Kepala Prodi</label>
+                                <label>Jabatan</label>
                                 <div class="mb-3">
-                                    <input name="ketua_grup" type="text" class="form-control" placeholder="Kepala Prodi"
+                                    <input name="jabatan" type="text" class="form-control" placeholder="Jabatan"
                                         aria-label="Ketua Team" aria-describedby="ketua_team-addon">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Fakultas</label>
+                                <label>Audity/Prodi</label>
                                 <div class="mb-3">
                                     @php
-                                    $fakultas = \App\Models\Fakultas::where('active',"Ya")->get();
+                                    $faudity = \App\Models\Audity::where('active', 'Ya')->get();
                                     @endphp
-                                    <select name="grup_id" class="form-select" id="">
-                                        <option value="">Pilih Fakultas</option>
-                                        @foreach ($fakultas as $fakultas_1)
-                                        <option value="{{$fakultas_1->id}}">{{$fakultas_1->name}}</option>
+                                    <select name="audity_id" class="form-select" id="">
+                                        <option value="">Pilih </option>
+                                        @foreach ($faudity as $faudity_1)
+                                        <option value="{{ $faudity_1->id }}">{{ $faudity_1->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6 ms-auto">
+                                <label>Institusi</label>
+                                <div class="mb-3">
+                                    @php
+                                    $fakultas = \App\Models\Fakultas::where('active',"Ya")->get();
+                                    @endphp
+                                    <select name="grup_id" class="form-select" id="">
+                                        <option value="">Pilih Institusi</option>
+                                        @foreach ($fakultas as $fakultas_1)
+                                        <option value="{{$fakultas_1->id}}">{{$fakultas_1->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>NIDN</label>
+                                <div class="mb-3">
+                                    <input name="nidn" type="text" class="form-control" placeholder="NIDN"
+                                        aria-label="Nama" aria-describedby="email-addon">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 ms-auto">
+
                                 <label>Situs</label>
                                 <div class="mb-3">
                                     <input name="situs" type="url" class="form-control" placeholder="Situs"
@@ -148,8 +175,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-outline-info">Simpan</button>
             </div>
             </form>
             @if(session('success'))
@@ -181,34 +208,54 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Nama Prodi</label>
+                            <label>Nama Akun</label>
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="editName" name="name">
+                                <input type="text" class="form-control" id="editKetua_grup" name="ketua_grup">
                             </div>
                         </div>
                         <div class="col-md-6 ms-auto">
-                            <label>Kepala Prodi</label>
+                            <label>Jabatan</label>
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="editKetua_grup" name="ketua_grup">
+                                <input type="text" class="form-control" id="editJabatan" name="jabatan">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Fakultas</label>
-                            <label>Fakultas</label>
+                            <label>Audity/Prodi</label>
+                            <div class="mb-3">
+                                @php
+                                $faudity = \App\Models\Audity::where('active', 'Ya')->get();
+                                @endphp
+                                <select name="audity_id" class="form-select" id="editAudityId">
+
+                                    @foreach ($faudity as $faudity_1)
+                                    <option value="{{ $faudity_1->id }}">{{ $faudity_1->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ms-auto">
+                            <label>Institusi</label>
                             <div class="mb-3">
                                 @php
                                 $fakultas = \App\Models\Fakultas::where('active', 'Ya')->get();
                                 @endphp
                                 <select name="grup_id" class="form-select" id="editGrupId">
-                                    <option value="">Pilih Fakultas</option>
+
                                     @foreach ($fakultas as $fakultas_1)
                                     <option value="{{ $fakultas_1->id }}">{{ $fakultas_1->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>NIDN</label>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="editNidn" name="nidn">
+                            </div>
                         </div>
                         <div class="col-md-6 ms-auto">
                             <label>Situs</label>
@@ -251,8 +298,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-outline-info">Simpan</button>
                 </div>
         </div>
         </form>
@@ -269,7 +316,7 @@ $(document).ready(function() {
         var query = $(this).val();
 
         $.ajax({
-            url: "{{ route('users.search') }}",
+            url: "{{ route('akun.search') }}",
             type: "GET",
             data: {
                 search: query
@@ -290,7 +337,7 @@ $(document).on('click', '.editUser', function() {
     var route = $(this).data('route');
 
     // Mendapatkan URL dari route 'users.update' dengan parameter id
-    var route_edit = "{{ route('users.update', ['id' => ':id']) }}";
+    var route_edit = "{{ route('akun.update', ['id' => ':id']) }}";
     route_edit = route_edit.replace(':id', id);
 
     // Set action form berdasarkan route yang telah disesuaikan dengan id
@@ -303,6 +350,9 @@ $(document).on('click', '.editUser', function() {
             $('#idnya').val(id);
             $('#editUserId').val(id);
             $('#editName').val(data.name);
+            $('#editJabatan').val(data.jabatan);
+            $('#editNidn').val(data.nidn);
+            $('#editAudityId').val(data.audity_id);
             $('#editGrupId').val(data.grup_id);
             $('#editKetua_grup').val(data.ketua_grup);
             $('#editSitus').val(data.situs);

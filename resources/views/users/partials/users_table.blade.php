@@ -9,30 +9,28 @@
                     alt="user1">
             </div>
             <div class="d-flex flex-column justify-content-center">
-                <h6 class="mb-0 text-sm">{{ $user->name }}</h6>
+                <h6 class="mb-0 text-sm">{{ $user->ketua_grup }}</h6>
                 <p class="text-xs text-secondary mb-0">{{ $user->email }}</p>
             </div>
         </div>
     </td>
     <td>
         <p class="text-xs font-weight-bold mb-0">
-            {{ $user->ketua_grup }}
+            {{ $user->jabatan }} {{ optional($user->audity)->name }}
         </p>
-        <p class="text-xs text-secondary mb-0">
-            NIDN:</p>
+
     </td>
     <td>
         <p class="text-xs font-weight-bold mb-0">
             {{ optional($user->fakultas)->name }}
         </p>
-        <p class="text-xs text-secondary mb-0">
-            {{ $user->situs }}</p>
+
     </td>
     <td class="align-middle text-center">
         <span class="text-secondary text-xs font-weight-bold">{{ $user->hak_akses }}</span>
     </td>
     <td class="align-middle text-center">
-        <form action="{{ route('users.updateActive', ['id' => $user->id]) }}" method="POST"
+        <form action="{{ route('akun.updateActive', ['id' => $user->id]) }}" method="POST"
             class="form-check form-switch d-flex justify-content-center align-items-center">
             @csrf
             @method('PUT')
@@ -42,14 +40,15 @@
         </form>
     </td>
     <td class="align-middle text-center">
-        <a href="javascript:;" class="btn btn-sm btn-warning text-dark font-weight-bold text-xs mt-2 editUser"
+        <a href="javascript:;"
+            class="btn btn-sm btn-outline-secondary text-secondary font-weight-bold text-xs mt-2 editUser"
             data-toggle="tooltip" data-original-title="Edit user" data-bs-toggle="modal" data-bs-target="#editUserModal"
-            data-id="{{ $user->id }}" data-route="{{ route('users.get_data', ['id' => $user->id]) }}">
+            data-id="{{ $user->id }}" data-route="{{ route('akun.get_data', ['id' => $user->id]) }}">
             <i class="fa fa-pencil text-lg"></i>
         </a>
-        <a href="javascript:;" class="btn btn-sm btn-danger text-dark font-weight-bold text-xs mt-2 deleteUser"
+        <a href="javascript:;" class="btn btn-sm btn-outline-dark text-dark font-weight-bold text-xs mt-2 deleteUser"
             data-toggle="tooltip" data-original-title="Edit user" data-id="{{ $user->id }}"
-            data-route="{{ route('users.delete', ['id' => $user->id]) }}">
+            data-route="{{ route('akun.delete', ['id' => $user->id]) }}">
             <i class="fa fa-trash text-lg"></i>
         </a>
     </td>

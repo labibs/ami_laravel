@@ -69,15 +69,17 @@
                 </a>
                 <!-- Submenu -->
                 <ul class="submenu mt-2" style="display: none;">
-                    <li class="nav-item"><a class="nav-link" href="../fakultas"><span class="nav-link-text ms-3">Data
-                                Fakultas</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../users"><span class="nav-link-text ms-3">Data
-                                User</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../siklus"><span class="nav-link-text ms-3">Data
+                    <li class="nav-item"><a class="nav-link" href="../institusi"><span class="nav-link-text ms-3">
+                                Institusi</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../audity"><span class="nav-link-text ms-3">
+                                Audity</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../akun"><span class="nav-link-text ms-3">
+                                Akun</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../siklus"><span class="nav-link-text ms-3">
                                 Siklus</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../standar"><span class="nav-link-text ms-3">Data
+                    <li class="nav-item"><a class="nav-link" href="../standar"><span class="nav-link-text ms-3">
                                 Standar</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../indikator"><span class="nav-link-text ms-3">Data
+                    <li class="nav-item"><a class="nav-link" href="../indikator"><span class="nav-link-text ms-3">
                                 Indikator</span></a></li>
                 </ul>
             </li>
@@ -114,7 +116,7 @@
                 </a>
                 <!-- Submenu -->
                 <ul class="submenu mt-2" style="display: none;">
-                    <li class="nav-item"><a class="nav-link" href="../capaian"><span class="nav-link-text ms-3">
+                    <li class="nav-item"><a class="nav-link" href="../target"><span class="nav-link-text ms-3">
                                 Ketercapaian</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="../pengukuran"><span class="nav-link-text ms-3">
                                 Pengukuran</span></a></li>
@@ -155,11 +157,12 @@
                 </a>
                 <!-- Submenu -->
                 <ul class="submenu mt-2" style="display: none;">
-                    <li class="nav-item"><a class="nav-link" href="../capaian"><span class="nav-link-text ms-3">
+                    <li class="nav-item"><a class="nav-link" href="../hasil"><span class="nav-link-text ms-3">
                                 Rekap Hasil</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../pengukuran"><span class="nav-link-text ms-3">
-                                Ranking Fakultas</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../visitasi"><span class="nav-link-text ms-3">
+                    <li class="nav-item"><a class="nav-link" href="../rangking_institusi"><span
+                                class="nav-link-text ms-3">
+                                Ranking Institusi</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../ranking_prodi"><span class="nav-link-text ms-3">
                                 Ranking Prodi</span></a></li>
 
                 </ul>
@@ -252,7 +255,7 @@
                 </div>
             </div>
         </div>
-        <!-- <a class="btn bg-gradient-primary mt-3 w-100"
+        <!-- <a class="btn bg-gradient-secondary mt-3 w-100"
                 href="https://www.creative-tim.com/product/soft-ui-dashboard-pro?ref=sidebarfree">Upgrade to pro</a> -->
     </div>
 </aside>

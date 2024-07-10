@@ -6,12 +6,12 @@
         <div class="card-body pb-2">
             <div class="row">
                 <div class="col-2">
-                    <a class=" btn bg-gradient-primary " data-bs-toggle="modal" data-bs-target="#tambahFakultas"
+                    <a class=" btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#tambahFakultas"
                         href="">Tambah</a>
                 </div>
                 <div class="col-3">
                     <form id="searchForm" action="{{ route('fakultas.search') }}" method="GET" class="">
-                        <input type="text" id="searchInput" name="search" placeholder="Search..." class="form-control">
+                        <input type="text" id="searchInput" name="search" placeholder="Cari..." class="form-control">
                     </form>
                 </div>
             </div>
@@ -22,7 +22,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header pb-2">
-                        <h6>Data Fakultas</h6>
+                        <h6>Data Institusi</h6>
                     </div>
                     <div class="card-body px-3 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -33,7 +33,7 @@
                                             Nama</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5 ps-2">
-                                            Dekan</th>
+                                            Kepala</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aktif</th>
@@ -60,7 +60,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tambahFakultasLabel">Tambah Fakultas</h5>
+                <h5 class="modal-title" id="tambahFakultasLabel">Tambah Institusi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -69,7 +69,7 @@
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Nama Fakultas</label>
+                                <label>Nama Institusi</label>
                                 <div class="mb-3">
                                     <input name="name" type="text" class="form-control" placeholder="Nama Fakultas"
                                         aria-label="Nama" aria-describedby="email-addon">
@@ -79,16 +79,16 @@
                                 <label>Description</label>
                                 <div class="mb-3">
                                     <input name="description" type="text" class="form-control" placeholder="Kepanjangan"
-                                        aria-label="Ketua Team" aria-describedby="ketua_team-addon">
+                                        aria-label="Kepala Team" aria-describedby="Kepala_team-addon">
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6 ms-auto">
-                                <label>Kepala Fakultas</label>
+                                <label>Kepala Institusi</label>
                                 <div class="mb-3">
-                                    <input name="dekan" type="text" class="form-control" placeholder="Dekan"
-                                        aria-label="Ketua Team" aria-describedby="ketua_team-addon">
+                                    <input name="dekan" type="text" class="form-control" placeholder="Kepala Institusi"
+                                        aria-label="Kepala Team" aria-describedby="Kepala_team-addon">
                                 </div>
                             </div>
                             <div class="col-md-6 ms-auto">
@@ -111,8 +111,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-outline-info">Simpan</button>
             </div>
             </form>
             @if(session('success'))
@@ -134,7 +134,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editFakultasModalLabel">Edit Fakultas</h5>
+                <h5 class="modal-title" id="editFakultasModalLabel">Edit Institusi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="editFakultasForm" method="POST" enctype="multipart/form-data">
@@ -144,7 +144,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Nama Fakultas</label>
+                            <label>Nama Institusi</label>
                             <div class="mb-3">
                                 <input type="text" class="form-control" id="editName" name="name">
                             </div>
@@ -158,7 +158,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Dekan</label>
+                            <label>Kepala</label>
                             <div class="mb-3">
                                 <input type="text" class="form-control" id="editDekan" name="dekan">
                             </div>
@@ -174,8 +174,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-outline-info">Simpan</button>
                 </div>
         </div>
         </form>

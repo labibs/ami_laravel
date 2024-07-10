@@ -11,7 +11,7 @@ class StandarController extends Controller
 {
     public function index()
     {
-        $standar = Standar::all();
+        $standar = Standar::where('id', '!=', 1)->where('active', 'Ya')->get();
 
         return view('standar.index', compact('standar'));
     }

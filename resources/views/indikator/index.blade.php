@@ -6,36 +6,29 @@
         <div class="card-body pb-2">
             <div class="row">
                 <div class="col-2">
-                    <a class=" btn bg-gradient-primary " data-bs-toggle="modal" data-bs-target="#tambahindikator"
+                    <a class=" btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#tambahindikator"
                         href="">Tambah</a>
                 </div>
-                <div class="col-1">
-                    <a class="btn bg-gradient-info" href="#" data-bs-toggle="modal" data-bs-target="#uploadindikator"
-                        data-bs-placement="top" title="Import Data">
-                        <i class="fa fa-upload"></i>
-                    </a>
-                </div>
-
                 <div class="col-1">
                     <a class=" btn bg-gradient-success " data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Download Data" href=""><i class="fa fa-download"></i></a>
                 </div>
-                <div class="col-5">
-                    <form action="">
+                <div class="col-6">
+                    <form id="searchForm" class="">
                         @php
-                        $standar = \App\Models\Standar::where('active',"Ya")->get();
+                        $standar = \App\Models\Standar::where('id', '!=', 1)->where('active', 'Ya')->get();
                         @endphp
-                        <select name="standar_id" class="form-select" id="">
+                        <select name="search" class="form-select" id="searchSelect">
                             <option value="">Pilih Standar untuk memfilter</option>
                             @foreach ($standar as $standar_1)
-                            <option value="{{$standar_1->id}}">{{$standar_1->name}}</option>
+                            <option value="{{$standar_1->kode}}">{{$standar_1->kode}}. {{$standar_1->name}}</option>
                             @endforeach
                         </select>
                     </form>
                 </div>
                 <div class="col-3">
                     <form id="searchForm" action="{{ route('indikator.search') }}" method="GET" class="">
-                        <input type="text" id="searchInput" name="search" placeholder="Search..." class="form-control">
+                        <input type="text" id="searchInput" name="search" placeholder="Cari...." class="form-control">
                     </form>
                 </div>
             </div>
@@ -135,100 +128,143 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid">
-                    <form class="" action="{{ route('indikator.create') }}" method="POST">
-                        {{csrf_field()}}
-                        <div class="row">
-                            <div class="col-md-9">
-                                <label>Standar</label>
-                                <div class="mb-3">
-                                    @php
-                                    $standar = \App\Models\Standar::where('active',"Ya")->get();
-                                    @endphp
-                                    <select name="standar_id" class="form-select" id="">
-                                        <option value="">Pilih Standar</option>
-                                        @foreach ($standar as $standar_1)
-                                        <option value="{{$standar_1->id}}">{{$standar_1->name}}</option>
-                                        @endforeach
-                                    </select>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                            aria-selected="true">Satu</button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                            type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Masal</button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="container-fluid">
+                            <form class="" action="{{ route('indikator.create') }}" method="POST">
+                                {{csrf_field()}}
+                                <div class="row mt-4">
+                                    <div class="col-md-9">
+                                        <label>Standar</label>
+                                        <div class="mb-3">
+                                            @php
+                                            $standar = \App\Models\Standar::where('id', '!=', 1)->where('active',
+                                            'Ya')->get();
+                                            @endphp
+                                            <select name="standard_id" class="form-select" id="">
+                                                <option value="">Pilih Standar</option>
+                                                @foreach ($standar as $standar_1)
+                                                <option value="{{$standar_1->id}}">{{$standar_1->kode}}.
+                                                    {{$standar_1->name}}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 ms-auto">
+                                        <label>Kode</label>
+                                        <div class="mb-3">
+                                            <input name="kode" type="text" class="form-control" placeholder="Kode"
+                                                aria-label="Kode" aria-describedby="situs-addon">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 ms-auto">
-                                <label>Kode</label>
-                                <div class="mb-3">
-                                    <input name="kode" type="text" class="form-control" placeholder="Kode"
-                                        aria-label="Kode" aria-describedby="situs-addon">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label for="indikator" class="form-label">Indikator</label>
+                                            <textarea name="indikator" class="form-control"
+                                                placeholder="Masukkan Indikator" aria-label="Nama Prodi"
+                                                aria-describedby="email-addon" rows="4"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <label for="indikator" class="form-label">Indikator</label>
-                                    <textarea name="indikator" class="form-control" placeholder="Masukkan Indikator"
-                                        aria-label="Nama Prodi" aria-describedby="email-addon" rows="4"></textarea>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Rujukan PAPS </label>
-                                <div class="mb-3">
-                                    <input name="rujukan_paps" type="text" class="form-control"
-                                        placeholder="Rujukan PAPS" aria-label="rujukan_paps"
-                                        aria-describedby="email-addon">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Rujukan PAPS </label>
+                                        <div class="mb-3">
+                                            <input name="rujukan_paps" type="text" class="form-control"
+                                                placeholder="Rujukan PAPS" aria-label="rujukan_paps"
+                                                aria-describedby="email-addon">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ms-auto">
+                                        <label>Rujukan PAPT</label>
+                                        <div class="mb-3">
+                                            <input name="rujukan_papt" type="text" class="form-control"
+                                                placeholder="Rujukan PAPT" aria-label="rujukan_papt"
+                                                aria-describedby="password-addon">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 ms-auto">
-                                <label>Rujukan PAPT</label>
-                                <div class="mb-3">
-                                    <input name="rujukan_papt" type="text" class="form-control"
-                                        placeholder="Rujukan PAPT" aria-label="rujukan_papt"
-                                        aria-describedby="password-addon">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label for="dokumen" class="form-label">Dokumen</label>
+                                            <textarea name="dokumen" class="form-control" placeholder="Sumber dokumen"
+                                                aria-label="Dokumen" aria-describedby="email-addon" rows="2"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Audity </label>
+                                        <div class="mb-3">
+                                            <input name="audity" type="text" class="form-control" placeholder="Audity"
+                                                aria-label="audity" aria-describedby="email-addon">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ms-auto">
+                                        <label>Pemangku Kepentingan</label>
+                                        <div class="mb-3">
+                                            <input name="pemangku_kepentingan" type="text" class="form-control"
+                                                placeholder="Pemangku Kepentingan" aria-label="pemangku_kepentingan"
+                                                aria-describedby="password-addon">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="form-check form-switch ps-5 pt-2">
+                                            <input class="form-check-input" type="checkbox" id="active" name="active"
+                                                checked="">
+                                            <label class="form-check-label" for="active">Active</label>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <label for="dokumen" class="form-label">Dokumen</label>
-                                    <textarea name="dokumen" class="form-control" placeholder="Sumber dokumen"
-                                        aria-label="Dokumen" aria-describedby="email-addon" rows="2"></textarea>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="container-fluid">
+                            <form class="" action="{{ route('indikator.import') }}" method="POST"
+                                enctype="multipart/form-data">
+                                {{csrf_field()}}
+                                <div class="row mt-4">
+                                    <div class="col-md-8">
+                                        <label for="">Untuk Tambah Indikator secara masal, silahkan gunakan template
+                                            berikut</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn btn-success">Template</button>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Data Indikator Excel</label>
+                                        <div class="mb-3">
+                                            <input name="file_excel" type="file" class="form-control" placeholder="Kode"
+                                                aria-label="Kode" aria-describedby="situs-addon">
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Audity </label>
-                                <div class="mb-3">
-                                    <input name="audity" type="text" class="form-control" placeholder="Audity"
-                                        aria-label="audity" aria-describedby="email-addon">
-                                </div>
-                            </div>
-                            <div class="col-md-6 ms-auto">
-                                <label>Pemangku Kepentingan</label>
-                                <div class="mb-3">
-                                    <input name="pemangku_kepentingan" type="text" class="form-control"
-                                        placeholder="Pemangku Kepentingan" aria-label="pemangku_kepentingan"
-                                        aria-describedby="password-addon">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <div class="form-check form-switch ps-5 pt-2">
-                                    <input class="form-check-input" type="checkbox" id="active" name="active"
-                                        checked="">
-                                    <label class="form-check-label" for="active">Active</label>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
                 </div>
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-outline-info">Simpan</button>
             </div>
             </form>
             @if(session('success'))
@@ -254,24 +290,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid">
-                    <form class="" action="{{ route('indikator.import') }}" method="POST" enctype="multipart/form-data">
-                        {{csrf_field()}}
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Data Indikator Excel</label>
-                                <div class="mb-3">
-                                    <input name="file_excel" type="file" class="form-control" placeholder="Kode"
-                                        aria-label="Kode" aria-describedby="situs-addon">
-                                </div>
-                            </div>
-                        </div>
-                </div>
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success">Template</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-outline-info">Simpan</button>
             </div>
             </form>
             @if(session('success'))
@@ -306,12 +330,13 @@
                             <label>Standar</label>
                             <div class="mb-3">
                                 @php
-                                $standar = \App\Models\Standar::where('active',"Ya")->get();
+                                $standar = \App\Models\Standar::where('id', '!=', 1)->where('active', 'Ya')->get();
                                 @endphp
-                                <select name="standar_id" class="form-select" id="editStandarId">
+                                <select name="standard_id" class="form-select" id="editStandarId">
                                     <option value="">Pilih Standar</option>
                                     @foreach ($standar as $standar_1)
-                                    <option value="{{$standar_1->id}}">{{$standar_1->name}}</option>
+                                    <option value="{{$standar_1->id}}">{{$standar_1->kode}}. {{$standar_1->name}}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -380,8 +405,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-outline-info">Simpan</button>
                 </div>
         </div>
         </form>
@@ -407,7 +432,7 @@
                     <div class="row">
                         <div class="col-md-3 ms-auto">
                             @php
-                            $standar = \App\Models\Standar::where('active',"Ya")->get();
+                            $standar = \App\Models\Standar::where('id', '!=', 1)->where('active', 'Ya')->get();
                             @endphp
                             <label>Kode Standar</label>
                             <div class="mb-2">
@@ -520,8 +545,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-outline-info">Simpan</button>
                 </div>
         </div>
         </form>
@@ -554,6 +579,28 @@ $(document).ready(function() {
 });
 </script>
 <script>
+$(document).ready(function() {
+    $('#searchSelect').on('change', function() {
+        var query = $(this).val();
+
+        $.ajax({
+            url: "{{ route('indikator.searchSelect') }}",
+            type: "GET",
+            data: {
+                search: query
+            },
+            success: function(data) {
+                $('#indikator-table-body').html(data);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+});
+</script>
+
+<script>
 $(document).on('click', '.editIndikator', function() {
     var id = $(this).data('id');
     var route = $(this).data('route');
@@ -571,7 +618,7 @@ $(document).on('click', '.editIndikator', function() {
         success: function(data) {
             $('#idnya').val(id);
             $('#editindikatorId').val(id);
-            $('#editStandarId').val(data.standar_id);
+            $('#editStandarId').val(data.standard_id);
             $('#editKode').val(data.kode);
             $('#editIndikatortext').val(data.indikator);
             $('#editRujukanPaps').val(data.rujukan_paps);
@@ -634,7 +681,7 @@ $(document).on('click', '.viewIndikator', function() {
         success: function(data) {
             $('#idnya').val(id);
             $('#viewindikatorId').val(id);
-            $('#viewStandarId').val(data.standar_id);
+            $('#viewStandarId').val(data.standard_id);
             $('#viewStandar').val(data.standar);
             $('#viewKode').val(data.kode);
             $('#viewIndikatortext').val(data.indikator);

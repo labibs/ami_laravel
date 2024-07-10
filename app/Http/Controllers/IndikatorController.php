@@ -13,12 +13,13 @@ class IndikatorController extends Controller
 {
     public function index()
     {
-        $indikator = Indikator::all();
+        $indikator = Indikator::where('standard_id', '!=', 1)->get();
 
         return view('indikator.index', compact('indikator'));
     }
     public function search(Request $request)
     {
+        //dd($request);
         $searchQuery = $request->get('search');
 
         // Lakukan pencarian di database berdasarkan query yang diterima
@@ -35,11 +36,24 @@ class IndikatorController extends Controller
         // Render view partial indikator_table dan kirimkan sebagai respons AJAX
         return view('indikator.partials.indikator_table', compact('indikator'))->render();
     }
+    public function searchSelect(Request $request)
+    {
+        $searchQuery = $request->get('search');
+
+        // Lakukan pencarian di database berdasarkan query yang diterima
+        $indikator = Indikator::whereHas('standar', function ($query) use ($searchQuery) {
+                                    $query->where('kode', 'like', '%' . $searchQuery . '%');
+                                })
+                                ->paginate(10); // Misalnya menggunakan pagination dengan 10 item per halaman
+
+        // Render view partial indikator_table dan kirimkan sebagai respons AJAX
+        return view('indikator.partials.indikator_table', compact('indikator'))->render();
+    }
     public function create(Request $request)
     {
         //dd($request);
         $indikator = new Indikator;
-        $indikator->standar_id = $request->standar_id;
+        $indikator->standard_id = $request->standard_id;
         $indikator->kode = $request->kode;
         $indikator->indikator = $request->indikator;
         $indikator->rujukan_paps = $request->rujukan_paps;
@@ -78,7 +92,7 @@ class IndikatorController extends Controller
         $data = Indikator::find($id);
 
         return response()->json([
-            'standar_id' => $data->standar->kode,
+            'standard_id' => $data->standard_id,
             'standar' => $data->standar->name,
             'kode' => $data->kode,
             'indikator' => $data->indikator,
@@ -94,7 +108,7 @@ class IndikatorController extends Controller
     {
         //dd($request);
         $indikator = Indikator::find($id);
-        $indikator->standar_id = $request->standar_id;
+        $indikator->standard_id = $request->standard_id;
         $indikator->kode = $request->kode;
         $indikator->indikator = $request->indikator;
         $indikator->rujukan_paps = $request->rujukan_paps;

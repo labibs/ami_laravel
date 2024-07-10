@@ -21,6 +21,7 @@ class FakultasController extends Controller
 
         // Lakukan pencarian di database berdasarkan query yang diterima
         $fakultas = Fakultas::where('name', 'like', '%' . $searchQuery . '%')
+                     ->orWhere('description', 'like', '%' . $searchQuery . '%')
                      ->orWhere('dekan', 'like', '%' . $searchQuery . '%')
                      ->paginate(10); // Misalnya menggunakan pagination dengan 10 item per halaman
 

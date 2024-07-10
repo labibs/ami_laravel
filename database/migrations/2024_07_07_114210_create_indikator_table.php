@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('indikator', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('standar_id')->unsigned()->nullable();
+            $table->bigInteger('standard_id')->unsigned()->nullable();
             $table->string('kode');
             $table->string('indikator');
             $table->string('rujukan_paps');

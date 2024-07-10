@@ -31,13 +31,14 @@
     </td>
 
     <td class="align-middle text-center">
-        <a href="javascript:;" class="btn btn-sm btn-warning text-dark font-weight-bold text-xs mt-2 editsiklus"
+        <a href="javascript:;"
+            class="btn btn-sm btn-outline-secondary text-secondary font-weight-bold text-xs mt-2 editsiklus"
             data-toggle="tooltip" data-original-title="Edit siklus" data-bs-toggle="modal"
             data-bs-target="#editsiklusModal" data-id="{{ $siklus_1->id }}"
             data-route="{{ route('siklus.get_data', ['id' => $siklus_1->id]) }}">
             <i class="fa fa-pencil text-lg"></i>
         </a>
-        <a href="javascript:;" class="btn btn-sm btn-danger text-dark font-weight-bold text-xs mt-2 deletesiklus"
+        <a href="javascript:;" class="btn btn-sm btn-outline-dark text-dark font-weight-bold text-xs mt-2 deletesiklus"
             data-toggle="tooltip" data-original-title="Delete siklus" data-id="{{ $siklus_1->id }}"
             data-route="{{ route('siklus.delete', ['id' => $siklus_1->id]) }}">
             <i class="fa fa-trash text-lg"></i>

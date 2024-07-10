@@ -31,13 +31,14 @@
     </td>
 
     <td class="align-middle text-center">
-        <a href="javascript:;" class="btn btn-sm btn-warning text-dark font-weight-bold text-xs mt-2 editstandar"
+        <a href="javascript:;"
+            class="btn btn-sm btn-outline-secondary text-secondary font-weight-bold text-xs mt-2 editstandar"
             data-toggle="tooltip" data-original-title="Edit standar" data-bs-toggle="modal"
             data-bs-target="#editstandarModal" data-id="{{ $standar_1->id }}"
             data-route="{{ route('standar.get_data', ['id' => $standar_1->id]) }}">
             <i class="fa fa-pencil text-lg"></i>
         </a>
-        <a href="javascript:;" class="btn btn-sm btn-danger text-dark font-weight-bold text-xs mt-2 deletestandar"
+        <a href="javascript:;" class="btn btn-sm btn-outline-dark text-dark font-weight-bold text-xs mt-2 deletestandar"
             data-toggle="tooltip" data-original-title="Delete standar" data-id="{{ $standar_1->id }}"
             data-route="{{ route('standar.delete', ['id' => $standar_1->id]) }}">
             <i class="fa fa-trash text-lg"></i>
