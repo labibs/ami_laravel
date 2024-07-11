@@ -13,7 +13,7 @@ class TargetController extends Controller
 {
     public function index()
     {
-        $target = Target::all();
+        $target = Target::where('id','!=',1)->get();
 
         return view('target.index', compact('target'));
     }

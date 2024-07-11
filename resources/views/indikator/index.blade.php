@@ -121,7 +121,7 @@
 <!-- Modal Tambah indikator -->
 <div class="modal fade" id="tambahindikator" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="tambahindikatorLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="tambahindikatorLabel">Tambah indikator</h5>
@@ -280,41 +280,10 @@
 </div>
 <!-- End Modal Tambah indikator -->
 
-<!-- Modal upload indikator -->
-<div class="modal fade" id="uploadindikator" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="uploadindikatorLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="uploadindikatorLabel">Upload indikator</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-outline-info">Simpan</button>
-            </div>
-            </form>
-            @if(session('success'))
-            <script>
-            swal("Berhasil", "{{ Session::get('success')}}", 'success'), {
-                button: true,
-                button: "Ok",
-            }
-            </script>
-            @endif
-        </div>
-    </div>
-</div>
-<!-- End Modal Upload indikator -->
-
 <!-- Modal Edit indikator -->
 <div class="modal fade" id="editIndikatorModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="editindikatorModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg ">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editindikatorModalLabel">Edit Indikator</h5>

@@ -196,7 +196,8 @@
                                 {{csrf_field()}}
                                 <div class="row mt-4">
                                     <div class="col-md-8">
-                                        <label for="">Untuk Tambah Indikator secara masal, silahkan gunakan template
+                                        <label for="">Untuk Tambah Data Indikator Ketercapaian secara masal, silahkan
+                                            gunakan template
                                             berikut</label>
                                     </div>
                                     <div class="col-md-4">

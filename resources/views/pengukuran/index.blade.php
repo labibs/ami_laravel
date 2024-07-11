@@ -6,14 +6,14 @@
         <div class="card-body pb-2">
             <div class="row">
                 <div class="col-2">
-                    <a class=" btn btn-outline-success" data-bs-toggle="modal" data-bs-pengukuran="#tambahpengukuran"
+                    <a class=" btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#tambahPengukuran"
                         href="">Tambah</a>
                 </div>
                 <div class="col-1">
                     <a class=" btn bg-gradient-success " data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Download Data" href=""><i class="fa fa-download"></i></a>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                     <form id="searchFormAudity" class="">
                         @php
                         $audity = \App\Models\Audity::where('id', '!=', 1)->where('active', 'Ya')->get();
@@ -21,7 +21,8 @@
                         <select name="search" class="form-select" id="searchSelectAudity">
                             <option value="">Pilih Audity</option>
                             @foreach ($audity as $audity_1)
-                            <option value="{{$audity_1->name}}">{{$audity_1->name}}</option>
+                            <option value="{{$audity_1->name}}">{{$audity_1->name}} - {{$audity_1->fakultas->name}}
+                            </option>
                             @endforeach
                         </select>
                     </form>
@@ -39,7 +40,7 @@
                         </select>
                     </form>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
                     <form id="searchFormLainya" action="{{ route('pengukuran.search') }}" method="GET" class="">
                         <input type="text" id="searchInput" name="search" placeholder="Cari...." class="form-control">
                     </form>
@@ -52,7 +53,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header pb-2">
-                        <h6>Pengukuran</h6>
+                        <h6>Pengukuran Prodi <span id="audityDisplay"></span></h6>
                     </div>
                     <div class="card-body px-3 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -78,13 +79,15 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">
-                                            Audity</th>
+                                        <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">
+                                            Audity</th> -->
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5 ps-2">
                                             Indikator Mutu</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">
                                             Pengukuran</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">
+                                            Tahun</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Target</th>
@@ -109,23 +112,22 @@
     </div>
 </div>
 <!-- Modal Tambah pengukuran -->
-<div class="modal fade" id="tambahpengukuran" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="tambahpengukuranLabel" aria-hidden="true">
+<div class="modal fade" id="tambahPengukuran" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="tambaPengukurantLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tambahpengukuranLabel">Tambah Indikator Ketercapaian</h5>
+                <h5 class="modal-title" id="tambahPengukuranLabel">Tambah Aspek Pengukuran</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
-                            data-bs-pengukuran="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                            data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
                             aria-selected="true">Satu</button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
-                            data-bs-pengukuran="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
-                            aria-selected="false">Masal</button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                            type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Masal</button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -134,13 +136,13 @@
                             <form class="" action="{{ route('pengukuran.create') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="row mt-4">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <label>Audity/Prodi</label>
                                         <div class="mb-3">
                                             @php
                                             $faudity = \App\Models\Audity::where('active', 'Ya')->get();
                                             @endphp
-                                            <select name="audity_id" class="form-select" id="">
+                                            <select name="audity_id" class="form-select" id="audityId">
                                                 <option value="">Pilih Audity</option>
                                                 @foreach ($faudity as $faudity_1)
                                                 <option value="{{ $faudity_1->id }}">{{ $faudity_1->name }}
@@ -149,10 +151,26 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 ms-auto">
+                                    <div class="col-md-4">
+                                        <label>Siklus</label>
+                                        <div class="mb-3">
+                                            @php
+                                            $siklus = \App\Models\Siklus::where('active', 'Ya')->get();
+                                            @endphp
+                                            <select name="siklus_id" class="form-select" id="siklus_id">
+                                                <option value="">Pilih Siklus</option>
+                                                @foreach ($siklus as $siklus_1)
+                                                <option value="{{ $siklus_1->id }}">{{ $siklus_1->name }}
+                                                    {{ $siklus_1->description }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ms-auto">
                                         <label for="tahun">Tahun</label>
                                         <div class="mb-3">
                                             <select class="form-select" id="tahun" name="tahun" required>
+                                                <option value="">Pilih tahun</option>
                                                 <?php
                                             // Tahun sekarang
                                             $tahun_sekarang = date('Y');
@@ -166,21 +184,23 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-2">
                                     <div class="col-md-12">
                                         <label for="indikator" class="form-label">Indikator</label>
-                                        <select id="indikator" name="indikator_id" class="form-select"
+                                        <select id="indikator" name="target_id" class="form-control"
                                             style="width: 100%; height: 100%;">
                                             <!-- Opsi akan ditambahkan secara dinamis oleh Select2 -->
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label>Value </label>
-                                        <input type="text" class="form-control" name="value">
+                                <div class="row ">
+                                    <div class="col-md-12">
+                                        <label for="pengukuran" class="form-label">Pengukuran</label>
+                                        <textarea name="pengukuran" id="" rows="6" class="form-control"></textarea>
                                     </div>
-                                    <div class="col-md-6 ms-auto">
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12">
                                         <div class="form-check form-switch ps-5 pt-4">
                                             <input class="form-check-input" type="checkbox" id="active" name="active"
                                                 checked="">
@@ -188,6 +208,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -197,7 +218,8 @@
                                 {{csrf_field()}}
                                 <div class="row mt-4">
                                     <div class="col-md-8">
-                                        <label for="">Untuk Tambah Indikator secara masal, silahkan gunakan template
+                                        <label for="">Untuk Tambah Data Pengukuran secara masal, silahkan gunakan
+                                            template
                                             berikut</label>
                                     </div>
                                     <div class="col-md-4">
@@ -206,7 +228,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label>Data Indikator Excel</label>
+                                        <label>Upload Data Pengukuran Excel</label>
                                         <div class="mb-3">
                                             <input name="file_excel" type="file" class="form-control" placeholder="Kode"
                                                 aria-label="Kode" aria-describedby="situs-addon">
@@ -228,11 +250,20 @@
                     }
                     </script>
                     @endif
+                    @if(session('gagal'))
+                    <script>
+                    swal("Gagal", "{{ Session::get('gagal')}}", 'error'), {
+                        button: true,
+                        button: "Ok",
+                    }
+                    </script>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <!-- End Modal Tambah pengukuran -->
 
 <!-- Modal Edit pengukuran -->
@@ -244,13 +275,12 @@
                 <h5 class="modal-title" id="editpengukuranpengukuranLabel">Edit pengukuran</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="editpengukuranForm" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                <input type="hidden" id="editpengukuranId" name="id">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
+            <div class="modal-body">
+                <form id="editpengukuranForm" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="row mt-4">
+                        <div class="col-md-4">
                             <label>Audity/Prodi</label>
                             <div class="mb-3">
                                 @php
@@ -265,10 +295,26 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6 ms-auto">
+                        <div class="col-md-4">
+                            <label>Siklus</label>
+                            <div class="mb-3">
+                                @php
+                                $siklus = \App\Models\Siklus::where('active', 'Ya')->get();
+                                @endphp
+                                <select name="siklus_id" class="form-select" id="editSiklusId">
+                                    <option value="">Pilih Siklus</option>
+                                    @foreach ($siklus as $siklus_1)
+                                    <option value="{{ $siklus_1->id }}">{{ $siklus_1->name }}
+                                        {{ $siklus_1->description }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ms-auto">
                             <label for="tahun">Tahun</label>
                             <div class="mb-3">
-                                <select class="form-select" id="editTahun" name="tahun" required>
+                                <select class="form-select" id="tahun" name="editTahunForm" required>
+                                    <option value="">Pilih tahun</option>
                                     <?php
                                             // Tahun sekarang
                                             $tahun_sekarang = date('Y');
@@ -282,33 +328,135 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-2">
                         <div class="col-md-12">
                             <label for="indikator" class="form-label">Indikator</label>
-                            <select id="indikatorEdit" name="indikator_id" class="form-select"
+                            <select id="indikatorEdit" name="target_id" class="form-control"
                                 style="width: 100%; height: 100%;">
                                 <!-- Opsi akan ditambahkan secara dinamis oleh Select2 -->
                             </select>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label>Value </label>
-                            <input type="text" class="form-control" name="value" id="editValue">
-                        </div>
-                        <div class="col-md-6 ms-auto">
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <label for="editPengukuran" class="form-label">Pengukuran</label>
+                            <textarea name="pengukuran" id="editPengukuranForm" rows="6"
+                                class="form-control"></textarea>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-outline-info">Simpan</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-outline-info">Simpan</button>
+            </div>
+            </form>
         </div>
-        </form>
     </div>
 </div>
+
 <!-- End Modal Edit pengukuran -->
+
+<!-- Modal Nilai pengukuran -->
+<div class="modal fade" id="nilaipengukuranModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="nilaipengukuranLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="nilaipengukuranLabel">Penilaian</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="nilaipengukuranForm" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <label>Capaian Kinerja</label>
+                            <div class="mb-3">
+                                @php
+                                $faudity = \App\Models\Audity::where('active', 'Ya')->get();
+                                @endphp
+                                <select name="audity_id" class="form-select" id="editAudityId">
+                                    <option value="">Pilih Capaian</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Siklus</label>
+                            <div class="mb-3">
+                                @php
+                                $siklus = \App\Models\Siklus::where('active', 'Ya')->get();
+                                @endphp
+                                <select name="siklus_id" class="form-select" id="editSiklusId">
+                                    <option value="">Pilih Siklus</option>
+                                    @foreach ($siklus as $siklus_1)
+                                    <option value="{{ $siklus_1->id }}">{{ $siklus_1->name }}
+                                        {{ $siklus_1->description }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ms-auto">
+                            <label for="tahun">Tahun</label>
+                            <div class="mb-3">
+                                <select class="form-select" id="tahun" name="editTahunForm" required>
+                                    <option value="">Pilih tahun</option>
+                                    <?php
+                                            // Tahun sekarang
+                                            $tahun_sekarang = date('Y');
+                                            
+                                            // Pilihan tahun: tahun ini, satu tahun ke belakang, dan dua tahun ke depan
+                                            for ($tahun = $tahun_sekarang - 1; $tahun <= $tahun_sekarang + 2; $tahun++) {
+                                                echo '<option value="' . $tahun . '">' . $tahun . '</option>';
+                                            }
+                                        ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <label for="editPengukuran" class="form-label">Bukti Dokumen</label>
+                            <textarea name="pengukuran" id="editPengukuranForm" rows="2"
+                                class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <label for="editPengukuran" class="form-label">Catatan Auditor 1</label>
+                            <textarea name="pengukuran" id="editPengukuranForm" rows="2"
+                                class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <label for="editPengukuran" class="form-label">Catatan Auditor 2</label>
+                            <textarea name="pengukuran" id="editPengukuranForm" rows="2"
+                                class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <label for="editPengukuran" class="form-label">Catatan Lapangan</label>
+                            <textarea name="pengukuran" id="editPengukuranForm" rows="2"
+                                class="form-control"></textarea>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-outline-info">Simpan</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- End Modal nilai pengukuran -->
+
 
 <!-- Load jQuery terlebih dahulu -->
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
@@ -319,47 +467,60 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
-
-@php
-$indikators = \App\Models\Indikator::where('active', 'Ya')
-->with(['standar' => function ($query) {
-$query->select('id', 'kode', 'name'); // Memilih kolom yang diinginkan dari tabel Standar
-}])
-->get(['id', 'kode', 'Indikator']) // Memilih kolom yang diinginkan dari tabel Indikator
-->toArray();
-
-$jsonIndikators = json_encode($indikators);
-@endphp
-
 <script>
 $(document).ready(function() {
-    var indikators = <?php echo $jsonIndikators ?>;
+    $('#searchSelectAudity').on('change', function() {
+        var query = $(this).val();
+        $('#audityDisplay').text(query);
+        $.ajax({
+            url: "{{ route('pengukuran.searchSelectAudity') }}",
+            type: "GET",
+            data: {
+                search: query
+            },
+            success: function(data) {
+                $('#pengukuran-table-body').html(data);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+});
+</script>
+@php
+$targets = \App\Models\Target::where('active', 'Ya')
+->with('indikator:id,kode,indikator') // Relasi dengan Indikator, memilih kolom yang diinginkan
+->get();
 
+// Ubah data menjadi array untuk keperluan tertentu, seperti JSON
+$jsonTargets = $targets->map(function($target) {
+return [
+'id' => $target->id,
+'kode' => $target->indikator->kode,
+'indikator' => $target->indikator->indikator,
+];
+})->toJson();
+@endphp
+<script>
+$(document).ready(function() {
+    var indikators =
+        <?php echo $jsonTargets ?>;
     // Pastikan indikators tidak kosong dan memiliki struktur yang sesuai
     if (indikators && Array.isArray(indikators) && indikators.length > 0) {
         // Membuat mappedData di luar inisialisasi Select2
         var mappedData = indikators.map(function(item) {
-            // Asumsikan standar tersedia dan dimuat bersama dengan indikator
-            let standarData = item.standar || {}; // Menghindari kesalahan jika standar tidak ada
-
-            // Membuat objek baru dengan informasi yang diinginkan
             return {
                 id: item.id,
-                text: item.kode + '  ' + item.Indikator,
-                // Menambahkan informasi dari tabel Standar
-                standar: {
-                    kode: standarData.kode || '', // Menghindari kesalahan jika kode tidak ada
-                    name: standarData.name || '' // Menghindari kesalahan jika name tidak ada
-                    // Anda bisa menambahkan kolom lain dari tabel Standar di sini jika diperlukan
-                }
+                text: item.kode + ' ' + item.indikator,
             };
         });
 
         // Inisialisasi Select2 setelah pemetaan data
         $("#indikator").select2({
-            dropdownParent: $('#tambahpengukuran'), // Menyesuaikan dengan kebutuhan Anda
+            dropdownParent: $('#tambahPengukuran'), // Sesuaikan dengan kebutuhan Anda
             containerCssClass: 'custom-select2-container',
-            data: mappedData // Menyertakan data yang sudah dipetakan
+            data: mappedData // Sertakan data yang sudah dipetakan
         });
     } else {
         // Handle case when indikators is empty or undefined
@@ -370,7 +531,34 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
-    var indikators = <?php echo $jsonIndikators ?>;
+    var indikators =
+        <?php echo $jsonTargets ?>;
+    // Pastikan indikators tidak kosong dan memiliki struktur yang sesuai
+    if (indikators && Array.isArray(indikators) && indikators.length > 0) {
+        // Membuat mappedData di luar inisialisasi Select2
+        var mappedData = indikators.map(function(item) {
+            return {
+                id: item.id,
+                text: item.kode + ' ' + item.indikator,
+            };
+        });
+
+        // Inisialisasi Select2 setelah pemetaan data
+        $("#indikatorEdit").select2({
+            dropdownParent: $('#editPengukuran'), // Sesuaikan dengan kebutuhan Anda
+            containerCssClass: 'custom-select2-container',
+            data: mappedData // Sertakan data yang sudah dipetakan
+        });
+    } else {
+        // Handle case when indikators is empty or undefined
+        console.error('Data indikators is empty or undefined.');
+    }
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    var indikators = <?php echo $jsonTargets?>;
 
     // Pastikan indikators tidak kosong dan memiliki struktur yang sesuai
     if (indikators && Array.isArray(indikators) && indikators.length > 0) {
@@ -392,27 +580,6 @@ $(document).ready(function() {
         // Handle case when indikators is empty or undefined
         console.error('Data indikators is empty or undefined.');
     }
-});
-</script>
-<script>
-$(document).ready(function() {
-    $('#searchSelectAudity').on('change', function() {
-        var query = $(this).val();
-
-        $.ajax({
-            url: "{{ route('pengukuran.searchSelectAudity') }}",
-            type: "GET",
-            data: {
-                search: query
-            },
-            success: function(data) {
-                $('#pengukuran-table-body').html(data);
-            },
-            error: function(xhr, status, error) {
-                console.error('Error:', error);
-            }
-        });
-    });
 });
 </script>
 <script>
@@ -477,9 +644,49 @@ $(document).on('click', '.editpengukuran', function() {
             $('#idnya').val(id);
             $('#editpengukuranId').val(id);
             $('#editAudityId').val(data.audity_id);
-            $('#editTahun').val(data.tahun);
-            $('#editValue').val(data.value);
-            $('#indikatorEdit').val(data.indikator_id);
+            $('#editSiklusId').val(data.siklus_id);
+            // Set nilai tahun pada dropdown '#tahun'
+            $('#tahun').val(data.tahun);
+
+            // Memastikan dropdown '#tahun' menampilkan opsi yang dipilih
+            $('#tahun option[value="' + data.tahun + '"]').attr('selected', 'selected');
+            $('#indikator').val(data.indikator_id);
+            $('#editPengukuranForm').val(data.pengukuran);
+            $('#editpengukuranModal').modal('show');
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+});
+</script>
+<script>
+$(document).on('click', '.nilaipengukuran', function() {
+    var id = $(this).data('id');
+    var route = $(this).data('route');
+
+    // Mendapatkan URL dari route 'pengukuran.update' dengan parameter id
+    var route_edit = "{{ route('pengukuran.update', ['id' => ':id']) }}";
+    route_edit = route_edit.replace(':id', id);
+
+    // Set action form berdasarkan route yang telah disesuaikan dengan id
+    $('#editpengukuranForm').attr('action', route_edit);
+
+    $.ajax({
+        url: route,
+        type: 'GET',
+        success: function(data) {
+            $('#idnya').val(id);
+            $('#editpengukuranId').val(id);
+            $('#editAudityId').val(data.audity_id);
+            $('#editSiklusId').val(data.siklus_id);
+            // Set nilai tahun pada dropdown '#tahun'
+            $('#tahun').val(data.tahun);
+
+            // Memastikan dropdown '#tahun' menampilkan opsi yang dipilih
+            $('#tahun option[value="' + data.tahun + '"]').attr('selected', 'selected');
+            $('#indikator').val(data.indikator_id);
+            $('#editPengukuranForm').val(data.pengukuran);
             $('#editpengukuranModal').modal('show');
         },
         error: function(xhr, status, error) {

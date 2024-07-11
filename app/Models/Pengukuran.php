@@ -10,6 +10,7 @@ class Pengukuran extends Model
     use HasFactory;
     protected $table = 'pengukuran';
     protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $fillable = ['siklus_id', 'audity_id', 'standard_id', 'tahun','target_id', 'indikator_id', 'pengukuran', 'active'];
 
     public function siklus()
     {
@@ -26,5 +27,9 @@ class Pengukuran extends Model
     public function indikator()
     {
         return $this->belongsTo(Indikator::class, 'indikator_id', 'id');
+    }
+    public function target()
+    {
+        return $this->belongsTo(Target::class, 'target_id', 'id');
     }
 }

@@ -21,7 +21,7 @@
                         </div> -->
                 <li class="nav-item ps-0 d-flex align-items-center d-none d-lg-block">
                     <a class="btn btn-outline-dark btn-sm mb-0 me-3" href="../profile"
-                        style="text-transform: none; font-size: 16px; font-weight: bold;">{{Auth::user()->name}}</a>
+                        style="text-transform: none; font-size: 16px; font-weight: bold;">{{Auth::user()->ketua_grup}}</a>
                 </li>
 
                 <!-- <li class="nav-item d-flex align-items-center">

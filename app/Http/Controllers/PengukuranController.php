@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Imports\PengukuranImport;
+use App\Models\Indikator;
 use App\Models\Pengukuran;
+use App\Models\Standar;
+use App\Models\Target;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -22,13 +25,13 @@ class PengukuranController extends Controller
 
         // Lakukan pencarian di database berdasarkan query yang diterima
         $pengukuran = Pengukuran::where('tahun', 'like', '%' . $searchQuery . '%')
-                    ->orWhere('value', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('pengukuran', 'like', '%' . $searchQuery . '%')
                     ->orWhereHas('indikator', function ($query) use ($searchQuery) {
                         $query->where('indikator', 'like', '%' . $searchQuery . '%')
                         ->orwhere('kode', 'like', '%' . $searchQuery . '%');
                         })
-                    ->orWhereHas('audity', function ($query) use ($searchQuery) {
-                        $query->where('name', 'like', '%' . $searchQuery . '%');
+                    ->orWhereHas('target', function ($query) use ($searchQuery) {
+                        $query->where('value', 'like', '%' . $searchQuery . '%');
                         })
                     
                     ->paginate(10); // Misalnya menggunakan pagination dengan 10 item per halaman
@@ -46,9 +49,10 @@ class PengukuranController extends Controller
                                 })
                                 ->paginate(10); // Misalnya menggunakan pagination dengan 10 item per halaman
 
-        // Render view partial pengukuran_table dan kirimkan sebagai respons AJAX
+        // Render view partial target_table dan kirimkan sebagai respons AJAX
         return view('pengukuran.partials.pengukuran_table', compact('pengukuran'))->render();
     }
+
     public function searchSelectIndikator(Request $request)
     {
         $searchQuery = $request->get('search');
@@ -68,9 +72,25 @@ class PengukuranController extends Controller
         //dd($request);
         $pengukuran = new Pengukuran;
         $pengukuran->audity_id = $request->audity_id;
-        $pengukuran->indikator_id = $request->indikator_id;
+        $pengukuran->siklus_id = $request->siklus_id;
+        $pengukuran->target_id = $request->target_id;
         $pengukuran->tahun = $request->tahun;
-        $pengukuran->value = $request->value;
+        $target = Target::find($request->target_id);
+        if ($target) {
+            $pengukuran->indikator_id = $target->indikator_id;
+        } else {
+            Session::flash('gagal', 'Data Indikator Ketercapaian belum di tentukan!');
+            return redirect()->route('pengukuran.index', compact('pengukuran'));
+        }
+        $indikator = Indikator::find($target->indikator_id);
+        //dd($indikator);
+        if ($indikator) {
+            $pengukuran->standard_id = $indikator->standard_id;
+        } else {
+            Session::flash('gagal', 'Data Indikator Ketercapaian belum di tentukan!');
+            return redirect()->route('pengukuran.index', compact('pengukuran'));
+        }
+        $pengukuran->pengukuran = $request->pengukuran;
         if($request->active == "on"){
             $pengukuran->active = "Ya";
         } else {
@@ -80,6 +100,7 @@ class PengukuranController extends Controller
         $pengukuran = Pengukuran::paginate(10);
         Session::flash('success', 'Pengukuran berhasil ditambahkan!');
         return redirect()->route('pengukuran.index', compact('pengukuran'));
+        
     }
     public function updateActive(Request $request, $id)
     {
@@ -105,7 +126,8 @@ class PengukuranController extends Controller
             'audity_id' => $data->audity_id,
             'indikator_id' => $data->indikator_id,
             'tahun' => $data->tahun,
-            'value' => $data->value,
+            'pengukuran' => $data->pengukuran,
+            'siklus_id' => $data->siklus_id,
         ]);
 
     }
@@ -114,9 +136,25 @@ class PengukuranController extends Controller
         //dd($request);
         $pengukuran = Pengukuran::find($id);
         $pengukuran->audity_id = $request->audity_id;
-        $pengukuran->indikator_id = $request->indikator_id;
-        $pengukuran->tahun = $request->tahun;
-        $pengukuran->value = $request->value;
+        $pengukuran->siklus_id = $request->siklus_id;
+        $pengukuran->target_id = $request->target_id;
+        $pengukuran->tahun = $request->editTahunForm;
+        $target = Target::find($request->target_id);
+        if ($target) {
+            $pengukuran->indikator_id = $target->indikator_id;
+        } else {
+            Session::flash('gagal', 'Data Indikator Ketercapaian belum di tentukan!');
+            return redirect()->route('pengukuran.index', compact('pengukuran'));
+        }
+        $indikator = Indikator::find($target->indikator_id);
+        //dd($indikator);
+        if ($indikator) {
+            $pengukuran->standard_id = $indikator->standard_id;
+        } else {
+            Session::flash('gagal', 'Data Indikator Ketercapaian belum di tentukan!');
+            return redirect()->route('pengukuran.index', compact('pengukuran'));
+        }
+        $pengukuran->pengukuran = $request->pengukuran;
         $pengukuran->save();
         $pengukuran = Pengukuran::paginate(10);
         Session::flash('success', 'Pengukuran berhasil diupdate!');
